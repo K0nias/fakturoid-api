@@ -11,7 +11,7 @@ Installation
 
 The recommended way to install this library is through [Composer](http://getcomposer.org):
 
-    composer require k0nias/fakturoid-api "master-dev"
+    composer require k0nias/fakturoid-api:dev-master
     
     
 Usage  
