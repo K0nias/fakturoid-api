@@ -45,7 +45,7 @@ Tests
 To run the test suite, you need [Composer](http://getcomposer.org) and [PHPUnit](https://phpunit.de):
 
     composer install
-    phpunit
+    composer test
 
 
 TODO:
