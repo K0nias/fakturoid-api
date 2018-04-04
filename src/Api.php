@@ -73,6 +73,8 @@ final class Api
         if ($request->getMethod()->sameAs(Method::POST())) {
             curl_setopt($c, CURLOPT_POST, true);
             curl_setopt($c, CURLOPT_POSTFIELDS, json_encode($request->getData()));
+        } elseif ($request->getMethod()->sameAs(Method::DELETE())) {
+            curl_setopt($c, CURLOPT_CUSTOMREQUEST, 'DELETE');
         }
 
         $responseContent = curl_exec($c);
