@@ -5,6 +5,14 @@ Unofficial Fakturoid.cz API PHP wrapper. Official [library](https://github.com/f
 [API documentation](http://docs.fakturoid.apiary.io/)
 
 
+Reasons to write another API wrapper
+------------
+
+1) more strict data binding
+2) PHP7 support
+3) better test coverage
+
+
 
 Installation
 ------------
