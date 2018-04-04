@@ -2,12 +2,12 @@
 
 namespace K0nias\FakturoidApi\Exception\FilterParameter;
 
-use K0nias\FakturoidApi\Exception\FakturoidApiException;
+use K0nias\FakturoidApi\Exception\InvalidOptionParameterException;
 
-final class InvalidStatusException extends FakturoidApiException
+final class InvalidStatusException extends InvalidOptionParameterException
 {
     public static function create(string $givenStatus, array $availableStatues)
     {
-        return new self(sprintf('Invalid status. Given: "%s". Available statues: "%s".', $givenStatus, implode(', ', $availableStatues)));
+        return new self(parent::generateMessage($givenStatus, $availableStatues, 'Invalid status. Given: "%s". Available statues: "%s".'));
     }
 }
