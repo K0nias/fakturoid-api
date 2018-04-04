@@ -56,7 +56,6 @@ implements methods:
  invoices:
  - update invoice
  - fire invoice
- - create invoice
  - delete invoice
  
  expenses:
