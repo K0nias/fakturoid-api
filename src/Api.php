@@ -70,6 +70,11 @@ final class Api
         curl_setopt($c, CURLOPT_USERAGENT, $this->getUserAgent());
         curl_setopt($c, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
 
+        if ($request->getMethod()->sameAs(Method::POST())) {
+            curl_setopt($c, CURLOPT_POST, true);
+            curl_setopt($c, CURLOPT_POSTFIELDS, json_encode($request->getData()));
+        }
+
         $responseContent = curl_exec($c);
         $info = curl_getinfo($c);
 
