@@ -3,8 +3,8 @@
 namespace K0nias\FakturoidApi\Tests\Http\Response;
 
 use K0nias\FakturoidApi\Exception\MissingResponseClassException;
-use K0nias\FakturoidApi\Http\Request\GetUsersRequest;
-use K0nias\FakturoidApi\Http\Response\GetUsersResponse;
+use K0nias\FakturoidApi\Http\Request\User\GetUsersRequest;
+use K0nias\FakturoidApi\Http\Response\User\GetUsersResponse;
 use K0nias\FakturoidApi\Http\Response\ResponseResolver;
 use K0nias\FakturoidApi\Tests\Http\Request\Mock\MissingResponseRequestMock;
 use PHPUnit\Framework\TestCase;

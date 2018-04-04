@@ -23,16 +23,7 @@ final class ResponseResolver implements ResponseResolverInterface
      */
     protected function getResponseClass(RequestInterface $request): string
     {
-        $responseNamespace = 'K0nias\\FakturoidApi\\Http\\Response\\';
-        $pos = strrpos(get_class($request), '\\');
-
-        $requestClassName = substr(get_class($request), $pos + 1);
-
-        $baseName = substr($requestClassName, 0, - strlen('Request'));
-
-        $responseClass = $baseName.'Response';
-
-        return $responseNamespace.$responseClass;
+        return str_replace('Request', 'Response', get_class($request));
     }
 
     /**

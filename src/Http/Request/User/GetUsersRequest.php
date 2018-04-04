@@ -1,30 +1,20 @@
 <?php declare(strict_types = 1);
 
-namespace K0nias\FakturoidApi\Http\Request;
+namespace K0nias\FakturoidApi\Http\Request\User;
 
 use K0nias\FakturoidApi\Http\Method;
-use K0nias\FakturoidApi\Model\User\Id;
+use K0nias\FakturoidApi\Http\Request\RequestInterface;
 
-final class GetUserRequest implements RequestInterface
+final class GetUsersRequest implements RequestInterface
 {
-    const REQUEST_URI = 'users/%s.json';
-
-    /**
-     * @var Id
-     */
-    private $id;
-
-    public function __construct(Id $id)
-    {
-        $this->id = $id;
-    }
+    const REQUEST_URI = 'users.json';
 
     /**
      * {@inheritdoc}
      */
     public function getUri(): string
     {
-        return sprintf(self::REQUEST_URI, $this->id->getId());
+        return self::REQUEST_URI;
     }
 
     /**
@@ -42,6 +32,4 @@ final class GetUserRequest implements RequestInterface
     {
         return [];
     }
-
-
 }

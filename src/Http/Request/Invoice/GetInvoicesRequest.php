@@ -1,13 +1,14 @@
 <?php declare(strict_types = 1);
 
-namespace K0nias\FakturoidApi\Http\Request;
+namespace K0nias\FakturoidApi\Http\Request\Invoice;
 
 use K0nias\FakturoidApi\Http\Method;
+use K0nias\FakturoidApi\Http\Request\RequestInterface;
 use K0nias\FakturoidApi\Model\Invoice\Filter\ParametersInterface;
 
-final class GetRegularInvoicesRequest implements RequestInterface
+final class GetInvoicesRequest implements RequestInterface
 {
-    const REQUEST_URI = 'invoices/regular.json';
+    const REQUEST_URI = 'invoices.json';
 
     /**
      * @var ParametersInterface|null

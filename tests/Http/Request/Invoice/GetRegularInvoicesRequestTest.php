@@ -1,13 +1,13 @@
 <?php declare(strict_types = 1);
 
-namespace K0nias\FakturoidApi\Tests\Http\Request;
+namespace K0nias\FakturoidApi\Tests\Http\Request\Invoice;
 
-use K0nias\FakturoidApi\Http\Request\GetRegularInvoicesRequest;
+use K0nias\FakturoidApi\Http\Request\Invoice\GetRegularInvoicesRequest;
 use K0nias\FakturoidApi\Model\Invoice\Filter\Parameters;
 use K0nias\FakturoidApi\Model\Invoice\Status;
 use PHPUnit\Framework\TestCase;
 
-class GetProformaInvoiceRequestTest extends TestCase
+class GetRegularInvoicesRequestTest extends TestCase
 {
     public function testParameters()
     {

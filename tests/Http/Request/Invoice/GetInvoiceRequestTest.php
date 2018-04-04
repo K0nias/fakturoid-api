@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace K0nias\FakturoidApi\Tests\Http\Request;
+namespace K0nias\FakturoidApi\Tests\Http\Request\Invoice;
 
-use K0nias\FakturoidApi\Http\Request\GetInvoiceRequest;
+use K0nias\FakturoidApi\Http\Request\Invoice\GetInvoiceRequest;
 use K0nias\FakturoidApi\Model\Invoice\Id;
 use PHPUnit\Framework\TestCase;
 

@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace K0nias\FakturoidApi\Tests\Http\Request;
+namespace K0nias\FakturoidApi\Tests\Http\Request\User;
 
-use K0nias\FakturoidApi\Http\Request\GetUserRequest;
+use K0nias\FakturoidApi\Http\Request\User\GetUserRequest;
 use K0nias\FakturoidApi\Model\User\Id;
 use PHPUnit\Framework\TestCase;
 

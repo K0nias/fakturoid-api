@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace K0nias\FakturoidApi\Tests\Http\Request;
+namespace K0nias\FakturoidApi\Tests\Http\Request\Invoice;
 
-use K0nias\FakturoidApi\Http\Request\SearchInvoicesRequest;
+use K0nias\FakturoidApi\Http\Request\Invoice\SearchInvoicesRequest;
 use K0nias\FakturoidApi\Model\Filter\SearchParameters;
 use PHPUnit\Framework\TestCase;
 
