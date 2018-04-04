@@ -50,4 +50,44 @@ final class Status
         return $this->status;
     }
 
+    /**
+     * @return Status
+     */
+    public static function open(): self
+    {
+        return new self(self::STATUS_OPEN);
+    }
+
+    /**
+     * @return Status
+     */
+    public static function sent(): self
+    {
+        return new self(self::STATUS_SENT);
+    }
+
+    /**
+     * @return Status
+     */
+    public static function overdue(): self
+    {
+        return new self(self::STATUS_OVERDUE);
+    }
+
+    /**
+     * @return Status
+     */
+    public static function paid(): self
+    {
+        return new self(self::STATUS_PAID);
+    }
+
+    /**
+     * @return Status
+     */
+    public static function cancelled(): self
+    {
+        return new self(self::STATUS_CANCELLED);
+    }
+
 }

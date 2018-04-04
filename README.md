@@ -40,7 +40,7 @@ Usage
     $api = new Api($slug, $email, $apiToken);
     
     $filterParameters = new Parameters();
-    $filterParameters->status(new Status(Status::STATUS_OPEN))
+    $filterParameters->status(Status::open())
                     ->page(2);
     
     // @var \K0nias\FakturoidApi\Http\Response\GetInvoicesResponse
