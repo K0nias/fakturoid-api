@@ -2,12 +2,21 @@
 
 namespace K0nias\FakturoidApi\Http;
 
+use K0nias\FakturoidApi\Exception\InvalidOptionParameterException;
+
 final class Method
 {
     const GET_METHOD = 'GET';
     const POST_METHOD = 'POST';
     const PATCH_METHOD = 'PATCH';
     const DELETE_METHOD = 'DELETE';
+
+    private const AVAILABLE_METHODS = [
+        self::GET_METHOD,
+        self::POST_METHOD,
+        self::PATCH_METHOD,
+        self::DELETE_METHOD,
+    ];
 
     /**
      * @var string
@@ -21,6 +30,10 @@ final class Method
     {
         $method = strtoupper($method);
 
+        if ( ! in_array($method, self::AVAILABLE_METHODS)) {
+            throw InvalidOptionParameterException::createFrom($method, self::AVAILABLE_METHODS, 'Invalid http method. Given: "%s". Available methods: "%s".');
+        }
+
         $this->method = $method;
     }
 
@@ -29,7 +42,7 @@ final class Method
      */
     public function getMethod(): string
     {
-        return strtoupper($this->method);
+        return $this->method;
     }
 
     /**
