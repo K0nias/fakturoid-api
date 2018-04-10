@@ -66,7 +66,6 @@ implements methods:
  - update expense
  - fire expense
  - create expense
- - delete expense
  
  subjects:
   - get subjects
