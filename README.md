@@ -64,7 +64,6 @@ implements methods:
 
  expenses:
  - update expense
- - fire expense
  - create expense
  
  subjects:
@@ -99,6 +98,9 @@ reports:
  todos:
   - get todos
   - toggle completion
+  
+  
+ Refactor *\Event to accept date for methods like pay
   
  
  
