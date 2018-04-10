@@ -14,4 +14,29 @@ class ImmutableParameterBagTest extends TestCase
 
         $this->assertTrue($parameterBag !== $parameterBag2);
     }
+
+    public function testGetSingleParameter()
+    {
+        $parameterBag = new ImmutableParameterBag();
+        $parameterBag = $parameterBag->set('key', 1);
+
+        $this->assertEquals(1, $parameterBag->get('key'));
+    }
+
+    public function testExistingParameterKey()
+    {
+        $parameterBag = new ImmutableParameterBag();
+        $parameterBag = $parameterBag->set('key', 1);
+
+        $this->assertEquals(1, $parameterBag->get('key'));
+    }
+
+    public function testNotExistingParameterKey()
+    {
+        $parameterBag = new ImmutableParameterBag();
+
+        $this->expectException(\OutOfBoundsException::class);
+
+        $parameterBag->get('not_existing_parameter_key');
+    }
 }

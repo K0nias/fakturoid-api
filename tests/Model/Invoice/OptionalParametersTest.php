@@ -2,7 +2,6 @@
 
 namespace K0nias\FakturoidApi\Tests\Model\Invoice;
 
-
 use K0nias\FakturoidApi\Exception\InvalidParameterException;
 use K0nias\FakturoidApi\Model\Invoice\OptionalParameters;
 use PHPUnit\Framework\TestCase;

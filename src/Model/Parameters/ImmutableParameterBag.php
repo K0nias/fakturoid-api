@@ -33,6 +33,22 @@ final class ImmutableParameterBag
     }
 
     /**
+     * @param string $key
+     *
+     * @throws \OutOfBoundsException
+     *
+     * @return mixed
+     */
+    public function get(string $key)
+    {
+        if ( ! $this->has($key)) {
+            throw new \OutOfBoundsException(sprintf('Not existing key: "%s".', $key));
+        }
+
+        return $this->parameters[$key];
+    }
+
+    /**
      * @return array
      */
     public function getAll(): array

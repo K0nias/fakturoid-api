@@ -47,9 +47,6 @@ class InvoiceTest extends TestCase
         $testedData = $this->getInvoiceMinimalData();
         $originalData = $invoice->getData();
 
-        asort($testedData);
-        asort($originalData);
-
         $this->assertEquals($testedData, $originalData);
     }
 
@@ -63,9 +60,6 @@ class InvoiceTest extends TestCase
 
         $testedData = $this->getInvoiceWithOptionalData();
         $originalData = $invoice->getData();
-
-        asort($testedData);
-        asort($originalData);
 
         $this->assertEquals($testedData, $originalData);
     }

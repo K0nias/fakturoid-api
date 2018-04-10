@@ -3,19 +3,18 @@
 namespace K0nias\FakturoidApi\Model\Invoice;
 
 use K0nias\FakturoidApi\Exception\InvalidParameterException;
-use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
 
 final class OptionalParameters
 {
 
     /**
-     * @var ImmutableParameterBag
+     * @var Parameters
      */
     private $parameters;
 
     public function __construct()
     {
-        $this->parameters = new ImmutableParameterBag();
+        $this->parameters = new Parameters();
     }
 
     /**
@@ -27,11 +26,7 @@ final class OptionalParameters
      */
     public function due(int $due): self
     {
-        if ($due < 1) {
-            throw new InvalidParameterException(sprintf('Due must be positive integer greater than 0. Given: %s', $due));
-        }
-
-        $this->parameters = $this->parameters->set('due', $due);
+        $this->parameters->due($due);
 
         return $this;
     }
@@ -44,7 +39,7 @@ final class OptionalParameters
      */
     public function issuedDate(\DateTimeImmutable $issuedDate): self
     {
-        $this->parameters = $this->parameters->set('issued_on', $issuedDate->format('Y-m-d'));
+        $this->parameters->issuedDate($issuedDate);
 
         return $this;
     }
@@ -54,6 +49,6 @@ final class OptionalParameters
      */
     public function getParameters(): array
     {
-        return $this->parameters->getAll();
+        return $this->parameters->getParameters();
     }
 }
