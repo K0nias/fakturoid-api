@@ -63,7 +63,6 @@ TODO:
 implements methods:
 
  expenses:
- - search expense
  - update expense
  - fire expense
  - create expense
