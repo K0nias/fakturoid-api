@@ -1,6 +1,6 @@
-<?php
+<?php declare(strict_types = 1);
 
-namespace K0nias\FakturoidApi\Model\Filter;
+namespace K0nias\FakturoidApi\Model\Parameters;
 
 
 final class ImmutableParameterBag
@@ -38,5 +38,15 @@ final class ImmutableParameterBag
     public function getAll(): array
     {
         return $this->parameters;
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return bool
+     */
+    public function has(string $key): bool
+    {
+        return key_exists($key, $this->parameters);
     }
 }

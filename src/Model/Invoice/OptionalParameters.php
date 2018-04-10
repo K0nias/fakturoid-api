@@ -3,7 +3,7 @@
 namespace K0nias\FakturoidApi\Model\Invoice;
 
 use K0nias\FakturoidApi\Exception\InvalidParameterException;
-use K0nias\FakturoidApi\Model\Filter\ImmutableParameterBag;
+use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
 
 final class OptionalParameters
 {

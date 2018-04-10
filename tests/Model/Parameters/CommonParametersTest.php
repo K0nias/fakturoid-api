@@ -1,9 +1,9 @@
 <?php declare(strict_types = 1);
 
-namespace K0nias\FakturoidApi\Tests\Model\Filter;
+namespace K0nias\FakturoidApi\Tests\Model\Parameters;
 
 use K0nias\FakturoidApi\Model\Subject\Id;
-use K0nias\FakturoidApi\Tests\Model\Filter\Mock\CommonParameterMock;
+use K0nias\FakturoidApi\Tests\Model\Parameters\Mock\CommonParameterMock;
 use PHPUnit\Framework\TestCase;
 
 class CommonParametersTest extends TestCase

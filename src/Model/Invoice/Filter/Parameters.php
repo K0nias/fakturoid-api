@@ -2,7 +2,7 @@
 
 namespace K0nias\FakturoidApi\Model\Invoice\Filter;
 
-use K0nias\FakturoidApi\Model\Filter\CommonParameters;
+use K0nias\FakturoidApi\Model\Parameters\CommonParameters;
 use K0nias\FakturoidApi\Model\Invoice\Status;
 
 final class Parameters extends CommonParameters implements ParametersInterface

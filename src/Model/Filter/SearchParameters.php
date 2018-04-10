@@ -2,6 +2,7 @@
 
 namespace K0nias\FakturoidApi\Model\Filter;
 
+use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
 
 final class SearchParameters implements SearchParametersInterface
 {

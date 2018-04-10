@@ -2,7 +2,7 @@
 
 namespace K0nias\FakturoidApi\Model\Invoice\Filter;
 
-use K0nias\FakturoidApi\Model\Filter\ParametersInterface as BaseParametersInterface;
+use K0nias\FakturoidApi\Model\Parameters\ParametersInterface as BaseParametersInterface;
 use K0nias\FakturoidApi\Model\Invoice\Status;
 
 interface ParametersInterface extends BaseParametersInterface

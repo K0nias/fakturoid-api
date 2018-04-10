@@ -1,8 +1,8 @@
 <?php
 
-namespace K0nias\FakturoidApi\Tests\Model\Filter;
+namespace K0nias\FakturoidApi\Tests\Model\Parameters;
 
-use K0nias\FakturoidApi\Model\Filter\ImmutableParameterBag;
+use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
 use PHPUnit\Framework\TestCase;
 
 class ImmutableParameterBagTest extends TestCase

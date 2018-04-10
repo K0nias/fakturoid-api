@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace K0nias\FakturoidApi\Model\Filter;
+namespace K0nias\FakturoidApi\Model\Parameters;
 
 use K0nias\FakturoidApi\Model\Subject\Id;
 
