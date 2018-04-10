@@ -62,9 +62,6 @@ TODO:
 
 implements methods:
 
- invoices:
- - update invoice
- 
  expenses:
  - get expenses
  - get expense
