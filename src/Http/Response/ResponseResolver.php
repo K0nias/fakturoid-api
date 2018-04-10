@@ -17,7 +17,7 @@ final class ResponseResolver implements ResponseResolverInterface
     }
 
     /**
-     * @param RequestInterface $command
+     * @param RequestInterface $request
      *
      * @return string
      */

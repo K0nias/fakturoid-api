@@ -6,7 +6,7 @@ namespace K0nias\FakturoidApi\Model\Filter;
 final class SearchParameters implements SearchParametersInterface
 {
     /**
-     * @var array
+     * @var ImmutableParameterBag
      */
     protected $parameters;
 

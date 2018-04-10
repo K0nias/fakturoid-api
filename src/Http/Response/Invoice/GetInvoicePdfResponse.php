@@ -2,7 +2,7 @@
 
 namespace K0nias\FakturoidApi\Http\Response\Invoice;
 
-use K0nias\FakturoidApi\Http\Response\CommonJsonResponse;
+use K0nias\FakturoidApi\Http\Response\ResponseInterface;
 
 
 class GetInvoicePdfResponse implements ResponseInterface

@@ -35,7 +35,7 @@ final class Invoice
      * @param string                    $number
      * @param PaymentMethod             $paymentMethod
      * @param Line|LineCollection       $lines
-     * @param OptionalParameters|null   $additionalParameters
+     * @param OptionalParameters|null   $optionalParameters
      */
     public function __construct(Id $subjectId, string $number, PaymentMethod $paymentMethod, $lines, ?OptionalParameters $optionalParameters = null)
     {

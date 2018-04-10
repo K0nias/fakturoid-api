@@ -9,7 +9,7 @@ interface SearchParametersInterface
      *
      * @return SearchParametersInterface
      */
-    public function page(int $id): self;
+    public function page(int $page): self;
 
     /**
      * @param string $query

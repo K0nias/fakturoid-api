@@ -7,6 +7,12 @@ use K0nias\FakturoidApi\Model\Filter\ImmutableParameterBag;
 
 final class OptionalParameters
 {
+
+    /**
+     * @var ImmutableParameterBag
+     */
+    private $parameters;
+
     public function __construct()
     {
         $this->parameters = new ImmutableParameterBag();

@@ -26,7 +26,7 @@ interface ParametersInterface
      *
      * @return ParametersInterface
      */
-    public function page(int $id): self;
+    public function page(int $page): self;
 
     /**
      * @param \DateTimeImmutable $date

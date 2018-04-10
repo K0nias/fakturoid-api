@@ -7,7 +7,7 @@ use K0nias\FakturoidApi\Model\Subject\Id;
 abstract class CommonParameters implements ParametersInterface
 {
     /**
-     * @var array
+     * @var ImmutableParameterBag
      */
     protected $parameters;
 

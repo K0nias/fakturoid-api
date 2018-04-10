@@ -18,13 +18,13 @@ class InvalidOptionParameterException extends FakturoidApiException
     }
 
     /**
-     * @param string $givenOption
-     * @param array  $availableOptions
-     * @param string $message
+     * @param string      $givenOption
+     * @param array       $availableOptions
+     * @param string|null $message
      *
      * @return string
      */
-    public static function generateMessage(string $givenOption, array $availableOptions, $message = 'Invalid option. Given: "%s". Available options: "%s".'): string
+    public static function generateMessage(string $givenOption, array $availableOptions, ?string $message = 'Invalid option. Given: "%s". Available options: "%s".'): string
     {
         return sprintf($message, $givenOption, implode(', ', $availableOptions));
     }
