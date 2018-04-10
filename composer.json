@@ -28,6 +28,8 @@
   },
 
   "scripts": {
-    "test": "vendor/bin/phpunit"
+    "test": "composer phpunit && composer phpstan",
+    "phpunit": "vendor/bin/phpunit --verbose",
+    "phpstan": "vendor/bin/phpstan.phar --level=max analyse src"
   }
 }
