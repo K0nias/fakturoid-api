@@ -75,6 +75,9 @@ final class Api
             curl_setopt($c, CURLOPT_POSTFIELDS, json_encode($request->getData()));
         } elseif ($request->getMethod()->sameAs(Method::DELETE())) {
             curl_setopt($c, CURLOPT_CUSTOMREQUEST, 'DELETE');
+        } elseif ($request->getMethod()->sameAs(Method::PATCH())) {
+            curl_setopt($c, CURLOPT_CUSTOMREQUEST, 'PATCH');
+            curl_setopt($c, CURLOPT_POSTFIELDS, json_encode($request->getData()));
         }
 
         $responseContent = curl_exec($c);
