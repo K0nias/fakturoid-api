@@ -36,8 +36,6 @@ final class Line
      */
     public function __construct(string $name, int $unitPrice, float $quantity = 1.0, ?string $unit = null, ?float $vatRate = null)
     {
-        // TODO: add testing for positive $quantity, $vatRate and $unitPrice
-
         $this->name = $name;
         $this->unitPrice = $unitPrice;
         $this->quantity = $quantity;
