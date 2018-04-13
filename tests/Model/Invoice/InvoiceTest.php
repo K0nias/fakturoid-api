@@ -3,7 +3,7 @@
 namespace K0nias\FakturoidApi\Tests\Model\Invoice;
 
 use K0nias\FakturoidApi\Model\Invoice\Invoice;
-use K0nias\FakturoidApi\Model\Invoice\Line;
+use K0nias\FakturoidApi\Model\Line\Line;
 use K0nias\FakturoidApi\Model\Invoice\OptionalParameters;
 use K0nias\FakturoidApi\Model\Payment\Method;
 use K0nias\FakturoidApi\Model\Subject\Id as SubjectId;

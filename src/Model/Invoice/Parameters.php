@@ -3,6 +3,8 @@
 namespace K0nias\FakturoidApi\Model\Invoice;
 
 use K0nias\FakturoidApi\Exception\InvalidParameterException;
+use K0nias\FakturoidApi\Model\Line\Line;
+use K0nias\FakturoidApi\Model\Line\LineCollection;
 use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
 use K0nias\FakturoidApi\Model\Payment\Method as PaymentMethod;
 use K0nias\FakturoidApi\Model\Subject\Id as SubjectId;

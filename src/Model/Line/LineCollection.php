@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace K0nias\FakturoidApi\Model\Invoice;
+namespace K0nias\FakturoidApi\Model\Line;
 
 final class LineCollection
 {
