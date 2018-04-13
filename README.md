@@ -63,7 +63,6 @@ TODO:
 implements methods:
 
  subjects:
-  - search subject
   - update subject
   - create subject
   - delete subject
