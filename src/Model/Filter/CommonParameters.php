@@ -3,7 +3,6 @@
 namespace K0nias\FakturoidApi\Model\Filter;
 
 use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
-use K0nias\FakturoidApi\Model\Subject\Id;
 
 abstract class CommonParameters implements ParametersInterface
 {
@@ -15,16 +14,6 @@ abstract class CommonParameters implements ParametersInterface
     public function __construct()
     {
         $this->parameters = new ImmutableParameterBag();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function subject(Id $subjectId): ParametersInterface
-    {
-        $this->parameters = $this->parameters->set('subject_id', $subjectId->getId());
-
-        return $this;
     }
 
     /**

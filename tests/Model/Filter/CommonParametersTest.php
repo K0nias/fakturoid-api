@@ -22,24 +22,20 @@ class CommonParametersTest extends TestCase
         $custom = 'test_id';
         $page = 2;
         $sinceDate = new \DateTimeImmutable('2018-03-27 10:25:30');
-        $subjectId = new Id(100);
 
         $parametersFilter = (new CommonParameterMock())
             ->custom($custom)
             ->page($page)
-            ->since($sinceDate)
-            ->subject($subjectId);
+            ->since($sinceDate);
 
         $processedParameters = $parametersFilter->getParameters();
 
         $this->assertArrayHasKey('page', $processedParameters);
         $this->assertArrayHasKey('since', $processedParameters);
         $this->assertArrayHasKey('custom_id', $processedParameters);
-        $this->assertArrayHasKey('subject_id', $processedParameters);
 
         $this->assertSame($page, $processedParameters['page']);
         $this->assertSame($sinceDate->format(\DateTime::ATOM), $processedParameters['since']);
         $this->assertSame($custom, $processedParameters['custom_id']);
-        $this->assertSame($subjectId->getId(), $processedParameters['subject_id']);
     }
 }

@@ -2,17 +2,9 @@
 
 namespace K0nias\FakturoidApi\Model\Filter;
 
-use K0nias\FakturoidApi\Model\Subject\Id;
 
 interface ParametersInterface
 {
-
-    /**
-     * @param Id $subjectId
-     *
-     * @return ParametersInterface
-     */
-    public function subject(Id $subjectId): self;
 
     /**
      * @param string $id

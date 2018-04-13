@@ -2,10 +2,10 @@
 
 namespace K0nias\FakturoidApi\Model\Expense\Filter;
 
-use K0nias\FakturoidApi\Model\Filter\ParametersInterface as BaseParametersInterface;
+use K0nias\FakturoidApi\Model\Filter\DocumentParametersInterface;
 use K0nias\FakturoidApi\Model\Expense\Status;
 
-interface ParametersInterface extends BaseParametersInterface
+interface ParametersInterface extends DocumentParametersInterface
 {
 
     /**

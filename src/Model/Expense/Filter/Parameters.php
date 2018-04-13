@@ -2,10 +2,10 @@
 
 namespace K0nias\FakturoidApi\Model\Expense\Filter;
 
-use K0nias\FakturoidApi\Model\Filter\CommonParameters;
+use K0nias\FakturoidApi\Model\Filter\CommonDocumentParameters;
 use K0nias\FakturoidApi\Model\Expense\Status;
 
-final class Parameters extends CommonParameters implements ParametersInterface
+final class Parameters extends CommonDocumentParameters implements ParametersInterface
 {
     /**
      * {@inheritdoc}
