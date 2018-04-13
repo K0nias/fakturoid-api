@@ -62,10 +62,6 @@ TODO:
 
 implements methods:
 
- expenses:
- - update expense
- - create expense
- 
  subjects:
   - get subjects
   - get subject
