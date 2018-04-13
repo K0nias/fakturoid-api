@@ -65,7 +65,6 @@ implements methods:
  subjects:
   - update subject
   - create subject
-  - delete subject
   
  generators:
   - get generators
