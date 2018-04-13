@@ -43,28 +43,6 @@ class ExpenseTest extends TestCase
         return array_merge($this->getExpenseMinimalData(), ['issued_on' => '2018-04-01']);
     }
 
-    public function testDueDateInPast()
-    {
-        $dueDate = new \DateTimeImmutable();
-        $dueDate = $dueDate->modify('-1 day');
-
-        $expense = $this->createExpense(null, $dueDate);
-
-        $testedData = [
-            'subject_id' => 10,
-                    'lines' => [[
-                'name' => 'Work hour',
-                'unit_price' => 100,
-                'quantity' => 1.0,
-            ]],
-            'due_on' => $dueDate->format('Y-m-d'),
-            'issued_on' => $dueDate->format('Y-m-d'),
-        ];
-        $originalData = $expense->getData();
-
-        $this->assertEquals($testedData, $originalData);
-    }
-
     public function testExpenseMinimalData()
     {
         $expense = $this->createExpense();

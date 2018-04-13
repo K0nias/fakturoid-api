@@ -131,6 +131,20 @@ final class Parameters
      */
     public function getParameters(): array
     {
-        return $this->parameters->getAll();
+        $parameters = $this->parameters->getAll();
+
+        if ($this->parameters->has('due_on')) {
+            $dueDate = \DateTime::createFromFormat('Y-m-d', $this->parameters->get('due_on'));
+            $dueDate->setTime(0, 0, 0);
+            $today = new \DateTime();
+            $today->setTime(0, 0, 0);
+
+            if ($dueDate < $today) {
+                // if due date is in the past then issued date must be at least same
+                $parameters['issued_on'] = $dueDate->format('Y-m-d');
+            }
+        }
+
+        return $parameters;
     }
 }

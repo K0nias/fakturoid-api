@@ -12,15 +12,17 @@ class OptionalParametersTest extends TestCase
     {
         $parameters = new OptionalParameters();
 
+        $date = new \DateTimeImmutable();
+
         $parameters->paymentMethod(PaymentMethod::cash())
             ->number('2018-0001')
             ->originalNumber('2018-0001a')
-            ->issuedDate(new \DateTimeImmutable('2018-04-04'));
+            ->issuedDate($date);
 
         $this->assertEquals([
             'number' => '2018-0001',
             'original_number' => '2018-0001a',
-            'issued_on' => '2018-04-04',
+            'issued_on' => $date->format('Y-m-d'),
             'payment_method' => PaymentMethod::CASH_METHOD,
         ], $parameters->getParameters());
     }

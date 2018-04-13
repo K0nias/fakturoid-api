@@ -46,22 +46,7 @@ final class Expense
      */
     public function getData(): array
     {
-        return array_merge($this->getDefaultData(), $this->getOptionalParameters(), $this->parameters->getParameters());
-    }
-
-    protected function getDefaultData(): array
-    {
-        $dueDate = $this->dueDate->setTime(0, 0, 0);
-        $today = new \DateTime();
-        $today->setTime(0, 0, 0);
-
-        // if due date is in the past then issued date must be at least same
-        // can be overwritten by issued date in optional parameters
-        if ($dueDate < $today) {
-            return ['issued_on' => $this->dueDate->format('Y-m-d')];
-        }
-
-        return [];
+        return array_merge($this->getOptionalParameters(), $this->parameters->getParameters());
     }
 
     /**
