@@ -87,9 +87,9 @@ final class Currency implements CurrencyInterface
     /**
      * Currency constructor.
      *
-     * @param $code
+     * @param string $code
      */
-    public function __construct($code)
+    public function __construct(string $code)
     {
         $code = strtoupper($code);
 
