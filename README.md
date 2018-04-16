@@ -62,16 +62,12 @@ TODO:
 
 implements methods:
 
- subjects:
-  - update subject
-  
  generators:
   - get generators
   - get generator
   - get template generators
   - get recurring template generators
   - update generator
-  - create generator
   - delete generator
   
  messages:
