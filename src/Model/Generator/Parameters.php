@@ -27,7 +27,7 @@ final class Parameters
     }
 
     /**
-     * @param CurrencyInterface $periodic
+     * @param CurrencyInterface $currency
      *
      * @return Parameters
      */
