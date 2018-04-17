@@ -62,9 +62,6 @@ TODO:
 
 implements methods:
 
- generators:
-  - get generator
-  
  messages:
   - create message
   
