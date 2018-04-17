@@ -78,6 +78,11 @@ reports:
   - get todos
   - toggle completion
   
+ users:
+  - get actual user
+  - get users
+  - get user
+  
   
  Refactor *\Event to accept date for methods like pay
  
