@@ -63,7 +63,6 @@ TODO:
 implements methods:
 
  generators:
-  - get generators
   - get generator
   - get template generators
   - get recurring template generators
