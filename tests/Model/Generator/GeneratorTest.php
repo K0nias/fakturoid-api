@@ -56,10 +56,10 @@ class InvoiceTest extends TestCase
         $optionalData = new OptionalParameters();
         $optionalData->due(10);
 
-        $invoice = $this->createGenerator($optionalData);
+        $generator = $this->createGenerator($optionalData);
 
         $testedData = $this->getInvoiceOptionalData();
-        $originalData = $invoice->getData();
+        $originalData = $generator->getData();
 
         $this->assertEquals($testedData, $originalData);
     }
