@@ -64,7 +64,6 @@ implements methods:
 
  generators:
   - get generator
-  - get recurring template generators
   
  messages:
   - create message
