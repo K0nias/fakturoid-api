@@ -63,7 +63,6 @@ TODO:
 implements methods:
 
 reports:
-  - get reports
   - get reports paid
   - get reports vat
   
