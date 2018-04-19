@@ -62,9 +62,6 @@ TODO:
 
 implements methods:
 
- messages:
-  - create message
-  
  events:
   - get events
   - get paid events
@@ -80,8 +77,6 @@ reports:
   
  users:
   - get actual user
-  - get users
-  - get user
   
   
  Refactor *\Event to accept date for methods like pay
