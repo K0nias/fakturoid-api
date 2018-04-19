@@ -63,7 +63,6 @@ TODO:
 implements methods:
 
  todos:
-  - get todos
   - toggle completion
   
  users:
