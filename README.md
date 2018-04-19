@@ -62,9 +62,6 @@ TODO:
 
 implements methods:
 
- events:
-  - get paid events
-  
 reports:
   - get reports
   - get reports paid
