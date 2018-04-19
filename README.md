@@ -62,9 +62,6 @@ TODO:
 
 implements methods:
 
-reports:
-  - get reports vat
-  
  todos:
   - get todos
   - toggle completion
