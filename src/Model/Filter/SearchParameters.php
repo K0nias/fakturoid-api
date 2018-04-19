@@ -20,8 +20,10 @@ final class SearchParameters implements SearchParametersInterface
      * @throws \OutOfRangeException
      *
      * {@inheritdoc}
+     *
+     * @return self
      */
-    public function page(int $page): SearchParametersInterface
+    public function page(int $page): self
     {
         if (1 > $page) {
             throw new \OutOfRangeException(sprintf('Page must be positive integer. Given "%s"', $page));
@@ -34,8 +36,10 @@ final class SearchParameters implements SearchParametersInterface
 
     /**
      * {@inheritdoc}
+     *
+     * @return self
      */
-    public function query(string $query): SearchParametersInterface
+    public function query(string $query): self
     {
         $this->parameters = $this->parameters->set('query', $query);
 

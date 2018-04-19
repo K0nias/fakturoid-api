@@ -6,17 +6,13 @@ interface SearchParametersInterface
 {
     /**
      * @param int $page
-     *
-     * @return SearchParametersInterface
      */
-    public function page(int $page): self;
+    public function page(int $page);
 
     /**
      * @param string $query
-     *
-     * @return SearchParametersInterface
      */
-    public function query(string $query): self;
+    public function query(string $query);
 
     /**
      * @return array
