@@ -12,7 +12,7 @@ final class Line
      */
     private $name;
     /**
-     * @var int
+     * @var float
      */
     private $unitPrice;
     /**
