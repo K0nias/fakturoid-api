@@ -62,9 +62,6 @@ TODO:
 
 implements methods:
 
- todos:
-  - toggle completion
-  
  users:
   - get actual user
   
