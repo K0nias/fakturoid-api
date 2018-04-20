@@ -2,6 +2,8 @@
 
 namespace K0nias\FakturoidApi\Model\Line;
 
+use K0nias\FakturoidApi\Exception\InvalidParameterException;
+
 final class LineCollection
 {
     /**
@@ -10,10 +12,16 @@ final class LineCollection
     private $lines = [];
 
     /**
+     * @throws InvalidParameterException if lines[] is empty
+     *
      * @param array $lines
      */
     public function __construct(array $lines = [])
     {
+        if (0 === count($lines)) {
+            throw new InvalidParameterException("There must be at least one line in LineCollection. Empty array given.");
+        }
+
         array_map(function (Line $line) {
             $this->add($line);
         }, $lines);
