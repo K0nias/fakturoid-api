@@ -6,6 +6,7 @@ use K0nias\FakturoidApi\Exception\InvalidAuthorizationException;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
 use K0nias\FakturoidApi\Http\Response\Response;
+use K0nias\FakturoidApi\Tests\Http\Request\Mock\SluglessRequestMock;
 use PHPUnit\Framework\TestCase;
 
 class ApiTest extends TestCase
@@ -38,6 +39,16 @@ class ApiTest extends TestCase
         $request = $this->createMock(RequestInterface::class);
 
         $api->process($request);
+    }
+
+    public function testRequestUrlWithoutSlug()
+    {
+        $slug = 'slug';
+        $api = $this->createApi($slug);
+
+        $request = new SluglessRequestMock();
+
+        $this->assertSame("https://app.fakturoid.cz/api/v2/accounts/slug_less_uri.json", $api->getRequestUrl($request));
     }
 
     public function testRequestUrl()

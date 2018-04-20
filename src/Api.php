@@ -5,6 +5,7 @@ namespace K0nias\FakturoidApi;
 use K0nias\FakturoidApi\Client\ClientInterface;
 use K0nias\FakturoidApi\Client\CurlClient;
 use K0nias\FakturoidApi\Exception\InvalidAuthorizationException;
+use K0nias\FakturoidApi\Http\Request\NotSlugAwareRequestInterface;
 use K0nias\FakturoidApi\Http\Request\RequestUrlResolverInterface;
 use K0nias\FakturoidApi\Http\Response\Response;
 use K0nias\FakturoidApi\Http\Response\ResponseResolver;
@@ -16,7 +17,7 @@ use K0nias\FakturoidApi\Http\Response\ResponseResolverInterface;
 final class Api implements RequestUrlResolverInterface
 {
     const BASE_URL = 'https://app.fakturoid.cz/api/v2/accounts';
-    private const URL_FORMAT = '%s/%s/%s';
+    private const URL_FORMAT = '%s/%s';
 
     /**
      * @var string
@@ -94,7 +95,15 @@ final class Api implements RequestUrlResolverInterface
      */
     public function getRequestUrl(RequestInterface $request): string
     {
-        $url = sprintf(self::URL_FORMAT, self::BASE_URL, $this->slug, $request->getUri());
+        $uri = $this->slug.'/';
+
+        if ($request instanceof NotSlugAwareRequestInterface) {
+            $uri = '';
+        }
+
+        $uri .= $request->getUri();
+
+        $url = sprintf(self::URL_FORMAT, self::BASE_URL, $uri);
 
         if ($request->getMethod()->sameAs(Method::GET()) && $data = $request->getData()) {
             $url .= '?'.http_build_query($data);
