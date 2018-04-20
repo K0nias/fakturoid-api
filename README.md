@@ -60,12 +60,6 @@ To run the test suite, you need [Composer](http://getcomposer.org) and [PHPUnit]
 TODO:
 -----
 
-implements methods:
-
- users:
-  - get actual user
-  
-  
  Refactor *\Event to accept date for methods like pay
  
  

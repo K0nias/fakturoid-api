@@ -1,0 +1,16 @@
+<?php declare(strict_types = 1);
+
+namespace K0nias\FakturoidApi\Http\Response\User;
+
+use K0nias\FakturoidApi\Http\Response\CommonJsonResponse;
+
+final class GetActualUserResponse extends CommonJsonResponse
+{
+    /**
+     * @return array
+     */
+    public function getUser(): array
+    {
+        return $this->data;
+    }
+}
