@@ -16,7 +16,7 @@ use K0nias\FakturoidApi\Http\Response\ResponseResolverInterface;
 
 final class Api implements RequestUrlResolverInterface
 {
-    const BASE_URL = 'https://app.fakturoid.cz/api/v2/accounts';
+    const BASE_URL = 'https://app.fakturoid.cz/api/v2';
     private const URL_FORMAT = '%s/%s';
 
     /**
@@ -95,7 +95,7 @@ final class Api implements RequestUrlResolverInterface
      */
     public function getRequestUrl(RequestInterface $request): string
     {
-        $uri = $this->slug.'/';
+        $uri = sprintf('accounts/%s/', $this->slug);
 
         if ($request instanceof NotSlugAwareRequestInterface) {
             $uri = '';

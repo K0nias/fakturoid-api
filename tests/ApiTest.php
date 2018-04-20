@@ -48,7 +48,7 @@ class ApiTest extends TestCase
 
         $request = new SluglessRequestMock();
 
-        $this->assertSame("https://app.fakturoid.cz/api/v2/accounts/slug_less_uri.json", $api->getRequestUrl($request));
+        $this->assertSame("https://app.fakturoid.cz/api/v2/slug_less_uri.json", $api->getRequestUrl($request));
     }
 
     public function testRequestUrl()
