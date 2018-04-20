@@ -2,6 +2,8 @@
 
 namespace K0nias\FakturoidApi\Model\Line;
 
+use K0nias\FakturoidApi\Exception\InvalidParameterException;
+
 final class Line
 {
 
@@ -28,14 +30,34 @@ final class Line
 
 
     /**
+     * @throws InvalidParameterException
+     *
      * @param string      $name
-     * @param int         $unitPrice
+     * @param float       $unitPrice
      * @param float       $quantity
      * @param null|string $unit
      * @param float|null  $vatRate
      */
-    public function __construct(string $name, int $unitPrice, float $quantity = 1.0, ?string $unit = null, ?float $vatRate = null)
+    public function __construct(string $name, float $unitPrice, float $quantity = 1.0, ?string $unit = null, ?float $vatRate = null)
     {
+        $errors = [];
+
+        if ($unitPrice <= 0) {
+            $errors[] = sprintf('Unit price must be positive float. Given: "%s".', $unitPrice);
+        }
+
+        if ($quantity <= 0) {
+            $errors[] = sprintf('Quantity must be positive float. Given: "%s".', $quantity);
+        }
+
+        if (null !== $vatRate && $vatRate < 1) {
+            $errors[] = sprintf('Vat rate must be positive integer. Given: "%s".', $vatRate);
+        }
+
+        if ($errors) {
+            throw new InvalidParameterException(implode(' ', $errors));
+        }
+
         $this->name = $name;
         $this->unitPrice = $unitPrice;
         $this->quantity = $quantity;

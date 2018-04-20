@@ -71,7 +71,6 @@ implements methods:
 TODO2:
 -----
  - add testing for ItemCollection to have at least one item
- - add testing for Line#(quantity, vatRate and unitPrice) to be positive number
   
  
  
