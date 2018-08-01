@@ -46,6 +46,18 @@ final class Parameters
     }
 
     /**
+     * @param string $custom
+     *
+     * @return self
+     */
+    public function custom(string $custom): self
+    {
+        $this->parameters = $this->parameters->set('custom_id', $custom);
+
+        return $this;
+    }
+
+    /**
      * @param PaymentMethod $paymentMethod
      *
      * @return self

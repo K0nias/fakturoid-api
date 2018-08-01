@@ -44,6 +44,18 @@ final class OptionalParameters
     }
 
     /**
+     * @param string $custom
+     *
+     * @return self
+     */
+    public function custom(string $custom): self
+    {
+        $this->parameters->custom($custom);
+
+        return $this;
+    }
+
+    /**
      * @param \DateTimeImmutable $issuedDate
      *
      * @return self
