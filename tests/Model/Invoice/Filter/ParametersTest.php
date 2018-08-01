@@ -34,7 +34,7 @@ class CommonParametersTest extends TestCase
             'page' => $page,
             'since' => $sinceDate->format(\DateTime::ATOM),
             'updated_since' => $updatedSinceDate->format(\DateTime::ATOM),
-            'custom' => $custom,
+            'custom_id' => $custom,
             'number' => $number,
         ], $parametersFilter->getParameters());
     }

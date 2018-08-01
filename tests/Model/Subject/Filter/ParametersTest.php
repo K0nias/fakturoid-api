@@ -21,7 +21,7 @@ class ParametersTest extends TestCase
             ->custom($custom);
 
         $this->assertEquals([
-            'custom' => $custom,
+            'custom_id' => $custom,
             'page' => $page,
             'since' => $sinceDate->format(\DateTime::ATOM),
             'updated_since' => $updateSinceDate->format(\DateTime::ATOM),
