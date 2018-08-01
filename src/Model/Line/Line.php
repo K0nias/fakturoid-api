@@ -42,7 +42,7 @@ final class Line
     {
         $errors = [];
 
-        if ($unitPrice <= 0) {
+        if ($unitPrice < 0) {
             $errors[] = sprintf('Unit price must be positive float. Given: "%s".', $unitPrice);
         }
 

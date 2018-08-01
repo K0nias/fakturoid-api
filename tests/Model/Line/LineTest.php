@@ -12,7 +12,7 @@ class LineTest extends TestCase
     {
         $this->expectException(InvalidParameterException::class);
 
-        new Line('name', 0, 1);
+        new Line('name', -1, 1);
     }
 
     public function testInvalidQuantity()
