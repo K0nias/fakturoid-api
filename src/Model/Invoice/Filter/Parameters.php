@@ -32,7 +32,7 @@ final class Parameters implements ParametersInterface
      */
     public function custom(string $custom): ParametersInterface
     {
-        $this->parameters = $this->parameters->set('custom', $custom);
+        $this->parameters = $this->parameters->set('custom_id', $custom);
 
         return $this;
     }
