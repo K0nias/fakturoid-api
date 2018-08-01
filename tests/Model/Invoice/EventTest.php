@@ -27,4 +27,18 @@ class EventTest extends TestCase
         $this->assertSame((Event::cancel())->getEvent(), Event::CANCEL_EVENT);
         $this->assertSame((Event::undoCancel())->getEvent(), Event::UNDO_CANCEL_EVENT);
     }
+
+    public function testPaidEventWithOptionaldata()
+    {
+        $event = Event::pay(new \DateTimeImmutable('2018-02-02 00:00:00'), 50);
+
+        $this->assertSame(
+            [
+                'paid_at' => (new \DateTime('2018-02-02 00:00:00'))->format(\DateTime::ATOM),
+                'paid_amount' => 50.0,
+            ],
+            $event->getOptionalData()
+        );
+    }
+
 }

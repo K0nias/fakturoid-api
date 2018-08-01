@@ -33,6 +33,11 @@ final class Event
      */
     private $event;
 
+    /**
+     * @var array
+     */
+    private $optionalData = [];
+
 
     /**
      * @throws InvalidOptionParameterException
@@ -48,6 +53,11 @@ final class Event
         }
 
         $this->event = $event;
+    }
+
+    public function getOptionalData(): array
+    {
+        return $this->optionalData;
     }
 
     /**
@@ -77,9 +87,19 @@ final class Event
     /**
      * @return self
      */
-    public static function pay(): self
+    public static function pay(?\DateTimeImmutable $payDate = null, ?float $ammount = null): self
     {
-        return new self(self::PAY_EVENT);
+        $self = new self(self::PAY_EVENT);
+
+        if (null !== $payDate) {
+            $self->optionalData['paid_at'] = $payDate->format(\DateTime::ATOM);
+        }
+
+        if (null !== $ammount) {
+            $self->optionalData['paid_amount'] = $ammount;
+        }
+
+        return $self;
     }
 
     /**
