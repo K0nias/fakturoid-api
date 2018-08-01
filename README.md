@@ -11,7 +11,6 @@ Reasons to write another API wrapper
 1) more strict data binding
 2) PHP7 support
 3) better test coverage
-4) my first OSS attempt :)
 
 
 
