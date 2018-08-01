@@ -51,6 +51,6 @@ final class FireExpenseEventRequest implements RequestInterface
      */
     public function getData(): array
     {
-        return [];
+        return $this->event->getOptionalData();
     }
 }

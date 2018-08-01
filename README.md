@@ -54,12 +54,3 @@ To run the test suite, you need [Composer](http://getcomposer.org) and [PHPUnit]
 
     composer install
     composer test
-
-
-TODO:
------
-
- Refactor *\Event to accept date for methods like pay
- 
- 
- 
