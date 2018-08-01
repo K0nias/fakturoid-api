@@ -16,14 +16,13 @@ class InvoiceTest extends TestCase
     {
         $line = new Line('Work hour', 100, 1.0);
 
-        return new Invoice(new SubjectId(10), '2018-0001', Method::card(), $line, $optionalParameters);
+        return new Invoice(new SubjectId(10), Method::card(), $line, $optionalParameters);
     }
 
     public function getInvoiceMinimalData()
     {
         return [
             'subject_id' => 10,
-            'number' => '2018-0001',
             'payment_method' => Method::CARD_METHOD,
             'lines' => [[
                 'name' => 'Work hour',
@@ -37,7 +36,14 @@ class InvoiceTest extends TestCase
 
     public function getInvoiceWithOptionalData()
     {
-        return array_merge($this->getInvoiceMinimalData(), ['due' => 10, 'issued_on' => (new \DateTime('2018-04-01'))->format('Y-m-d')]);
+        return array_merge(
+            $this->getInvoiceMinimalData(),
+            [
+                'due' => 10,
+                'issued_on' => (new \DateTime('2018-04-01'))->format('Y-m-d'),
+                'number' => '2018-0001',
+            ]
+        );
     }
 
     public function testInvoiceMinimalData()
@@ -54,7 +60,8 @@ class InvoiceTest extends TestCase
     {
         $optionalData = new OptionalParameters();
         $optionalData->issuedDate(new \DateTimeImmutable('2018-04-01'))
-                            ->due(10);
+                            ->due(10)
+                            ->number('2018-0001');
 
         $invoice = $this->createInvoice($optionalData);
 

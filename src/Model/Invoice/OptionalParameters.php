@@ -31,6 +31,17 @@ final class OptionalParameters
         return $this;
     }
 
+    /**
+     * @param string $number
+     *
+     * @return self
+     */
+    public function number(string $number): self
+    {
+        $this->parameters->number($number);
+
+        return $this;
+    }
 
     /**
      * @param \DateTimeImmutable $issuedDate

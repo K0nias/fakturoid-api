@@ -21,19 +21,17 @@ final class Invoice
 
     /**
      * @param Id                        $subjectId
-     * @param string                    $number
      * @param PaymentMethod             $paymentMethod
      * @param Line|LineCollection       $lines
      * @param OptionalParameters|null   $optionalParameters
      */
-    public function __construct(Id $subjectId, string $number, PaymentMethod $paymentMethod, $lines, ?OptionalParameters $optionalParameters = null)
+    public function __construct(Id $subjectId, PaymentMethod $paymentMethod, $lines, ?OptionalParameters $optionalParameters = null)
     {
         $parameters = new Parameters();
 
         $parameters->lines($lines)
             ->subject($subjectId)
-            ->paymentMethod($paymentMethod)
-            ->number($number);
+            ->paymentMethod($paymentMethod);
 
         $this->parameters = $parameters;
         $this->optionalParameters = $optionalParameters;
