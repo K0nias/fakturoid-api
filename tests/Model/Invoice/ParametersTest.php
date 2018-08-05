@@ -18,6 +18,7 @@ class ParametersTest extends TestCase
         return [
             'subject_id' => 10,
             'number' => '2018-0001',
+            'variable_symbol' => '2018000a',
             'payment_method' => PaymentMethod::BANK_METHOD,
             'lines' => [[
                 'name' => 'Work hour',
@@ -75,6 +76,7 @@ class ParametersTest extends TestCase
         $parameters->due(10)
             ->number('2018-0001')
             ->paymentMethod(PaymentMethod::bank())
+            ->variableNumber('2018000a')
             ->subject(new SubjectId(10))
             ->lines(new Line('Work hour', 100, 1.0))
             ->issuedDate(new \DateTimeImmutable('2018-04-04'));

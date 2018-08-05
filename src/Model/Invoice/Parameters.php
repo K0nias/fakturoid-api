@@ -121,6 +121,13 @@ final class Parameters
         return $this;
     }
 
+    public function variableNumber(string $variableNumber): self
+    {
+        $this->parameters = $this->parameters->set('variable_symbol', $variableNumber);
+
+        return $this;
+    }
+
     /**
      * @param LineCollection $lineCollection
      *

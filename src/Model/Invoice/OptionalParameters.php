@@ -31,6 +31,13 @@ final class OptionalParameters
         return $this;
     }
 
+    public function variableNumber(string $variableNumber): self
+    {
+        $this->parameters->variableNumber($variableNumber);
+
+        return $this;
+    }
+
     /**
      * @param string $number
      *

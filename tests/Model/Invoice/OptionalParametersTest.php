@@ -22,8 +22,16 @@ class OptionalParametersTest extends TestCase
         $parameters = new OptionalParameters();
 
         $parameters->due(5)
-                    ->issuedDate(new \DateTimeImmutable('2018-04-04'));
+                    ->issuedDate(new \DateTimeImmutable('2018-04-04'))
+                    ->variableNumber('variable-Number1');
 
-        $this->assertSame(['due' => 5, 'issued_on' => '2018-04-04'], $parameters->getParameters());
+        $this->assertSame(
+            [
+                'due' => 5,
+                'issued_on' => '2018-04-04',
+                'variable_symbol' => 'variable-Number1',
+            ],
+            $parameters->getParameters()
+        );
     }
 }
