@@ -128,6 +128,13 @@ final class Parameters
         return $this;
     }
 
+    public function roundTotal(bool $roundTotal): self
+    {
+        $this->parameters = $this->parameters->set('round_total', $roundTotal);
+
+        return $this;
+    }
+
     /**
      * @param LineCollection $lineCollection
      *

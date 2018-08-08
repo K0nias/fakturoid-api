@@ -42,6 +42,7 @@ class InvoiceTest extends TestCase
                 'due' => 10,
                 'issued_on' => (new \DateTime('2018-04-01'))->format('Y-m-d'),
                 'number' => '2018-0001',
+                'round_total' => true,
                 'custom_id' => 'Custom ID#1',
             ]
         );
@@ -63,6 +64,7 @@ class InvoiceTest extends TestCase
         $optionalData->issuedDate(new \DateTimeImmutable('2018-04-01'))
                             ->due(10)
                             ->number('2018-0001')
+                            ->roundTotal(true)
                             ->custom('Custom ID#1');
 
         $invoice = $this->createInvoice($optionalData);

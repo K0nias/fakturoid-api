@@ -23,12 +23,14 @@ class OptionalParametersTest extends TestCase
 
         $parameters->due(5)
                     ->issuedDate(new \DateTimeImmutable('2018-04-04'))
+                    ->roundTotal(true)
                     ->variableNumber('variable-Number1');
 
         $this->assertSame(
             [
                 'due' => 5,
                 'issued_on' => '2018-04-04',
+                'round_total' => true,
                 'variable_symbol' => 'variable-Number1',
             ],
             $parameters->getParameters()

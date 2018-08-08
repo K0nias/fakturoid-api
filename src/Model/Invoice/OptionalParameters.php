@@ -62,6 +62,13 @@ final class OptionalParameters
         return $this;
     }
 
+    public function roundTotal(bool $roundTotal): self
+    {
+        $this->parameters->roundTotal($roundTotal);
+
+        return $this;
+    }
+
     /**
      * @param \DateTimeImmutable $issuedDate
      *
