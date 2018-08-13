@@ -3,6 +3,7 @@
 namespace K0nias\FakturoidApi\Tests\Model\Invoice;
 
 use K0nias\FakturoidApi\Exception\InvalidParameterException;
+use K0nias\FakturoidApi\Model\Invoice\VatPriceMode;
 use K0nias\FakturoidApi\Model\Line\Line;
 use K0nias\FakturoidApi\Model\Line\LineCollection;
 use K0nias\FakturoidApi\Model\Invoice\Parameters;
@@ -26,6 +27,7 @@ class ParametersTest extends TestCase
                 'quantity' => 1.0,
             ]],
             'due' => 10,
+            'vat_price_mode' => VatPriceMode::MODE_WITHOUT_VAT,
             'issued_on' => (new \DateTime('2018-04-04'))->format('Y-m-d'),
         ];
     }
@@ -79,6 +81,7 @@ class ParametersTest extends TestCase
             ->variableNumber('2018000a')
             ->subject(new SubjectId(10))
             ->lines(new Line('Work hour', 100, 1.0))
+            ->vatPriceMode(VatPriceMode::withoutVat())
             ->issuedDate(new \DateTimeImmutable('2018-04-04'));
 
 

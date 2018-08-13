@@ -121,6 +121,13 @@ final class Parameters
         return $this;
     }
 
+    public function vatPriceMode(VatPriceMode $vatPriceMode): self
+    {
+        $this->parameters = $this->parameters->set('vat_price_mode', $vatPriceMode->getMode());
+
+        return $this;
+    }
+
     public function variableNumber(string $variableNumber): self
     {
         $this->parameters = $this->parameters->set('variable_symbol', $variableNumber);

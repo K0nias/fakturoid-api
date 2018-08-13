@@ -50,6 +50,13 @@ final class OptionalParameters
         return $this;
     }
 
+    public function vatPriceMode(VatPriceMode $vatPriceMode): self
+    {
+        $this->parameters->vatPriceMode($vatPriceMode);
+
+        return $this;
+    }
+
     /**
      * @param string $custom
      *
