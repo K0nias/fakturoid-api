@@ -3,4 +3,10 @@
 namespace K0nias\FakturoidApi\Http\Response;
 
 interface ResponseInterface
-{}
+{
+
+    public function hasError(): bool;
+
+    public function getErrors(): array;
+
+}

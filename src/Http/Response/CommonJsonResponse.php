@@ -16,4 +16,14 @@ abstract class CommonJsonResponse implements ResponseInterface
     {
         $this->data = json_decode($content, true);
     }
+
+    public function hasError(): bool
+    {
+        return array_key_exists('errors', $this->data);
+    }
+
+    public function getErrors(): array
+    {
+        return $this->hasError() ? $this->data['errors'] : [];
+    }
 }

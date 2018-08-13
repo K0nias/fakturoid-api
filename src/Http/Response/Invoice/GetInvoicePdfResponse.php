@@ -28,4 +28,16 @@ class GetInvoicePdfResponse implements ResponseInterface
     {
         return $this->content;
     }
+
+    public function hasError(): bool
+    {
+        return false;
+    }
+
+    public function getErrors(): array
+    {
+        return [];
+    }
+
+
 }
