@@ -6,13 +6,11 @@ use K0nias\FakturoidApi\Model\Invoice\Id;
 
 final class Message
 {
-    /**
-     * @var Id
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Invoice\Id */
     private $invoiceId;
-    /**
-     * @var OptionalParameters|null
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Message\OptionalParameters|null */
     private $optionalParameters;
 
     public function __construct(Id $invoiceId, ?OptionalParameters $optionalParameters = null)
@@ -22,16 +20,17 @@ final class Message
     }
 
 
-    /**
-     * @return Id
-     */
     public function getInvoiceId(): Id
     {
         return $this->invoiceId;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getData(): array
     {
         return $this->optionalParameters ? $this->optionalParameters->getParameters() : [];
     }
+
 }

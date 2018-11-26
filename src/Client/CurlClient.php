@@ -10,30 +10,18 @@ use K0nias\FakturoidApi\Http\Response\Response;
 final class CurlClient implements ClientInterface
 {
 
-    /**
-     * @var RequestUrlResolverInterface
-     */
+    /** @var \K0nias\FakturoidApi\Http\Request\RequestUrlResolverInterface */
     private $urlResolver;
-    /**
-     * @var string
-     */
+
+    /** @var string */
     private $userAgent;
-    /**
-     * @var string
-     */
+
+    /** @var string */
     private $email;
-    /**
-     * @var string
-     */
+
+    /** @var string*/
     private $apiKey;
 
-
-    /**
-     * @param RequestUrlResolverInterface $urlResolver
-     * @param string                      $email
-     * @param string                      $apiKey
-     * @param string                      $userAgent
-     */
     public function __construct(RequestUrlResolverInterface $urlResolver, string $email, string $apiKey, string $userAgent)
     {
         $this->urlResolver = $urlResolver;
@@ -42,11 +30,6 @@ final class CurlClient implements ClientInterface
         $this->apiKey = $apiKey;
     }
 
-    /**
-     * @param RequestInterface $request
-     *
-     * @return Response
-     */
     public function processRequest(RequestInterface $request): Response
     {
         $c = curl_init();
@@ -59,7 +42,7 @@ final class CurlClient implements ClientInterface
         curl_setopt($c, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($c, CURLOPT_SSL_VERIFYHOST, 2);
         curl_setopt($c, CURLOPT_USERAGENT, $this->userAgent);
-        curl_setopt($c, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+        curl_setopt($c, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
 
         if ($request->getMethod()->sameAs(Method::POST())) {
             curl_setopt($c, CURLOPT_POST, true);
@@ -74,6 +57,7 @@ final class CurlClient implements ClientInterface
         $responseContent = curl_exec($c);
         $info = curl_getinfo($c);
 
-        return new Response($info['http_code'], (string)$responseContent);
+        return new Response($info['http_code'], (string) $responseContent);
     }
+
 }

@@ -6,8 +6,13 @@ use K0nias\FakturoidApi\Http\Response\CommonJsonResponse;
 
 final class GetSubjectsResponse extends CommonJsonResponse
 {
+
+    /**
+     * @return mixed[][]
+     */
     public function getSubjects(): array
     {
         return $this->data;
     }
+
 }

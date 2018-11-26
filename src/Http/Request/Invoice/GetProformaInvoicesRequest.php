@@ -8,34 +8,25 @@ use K0nias\FakturoidApi\Model\Invoice\Filter\ParametersInterface;
 
 final class GetProformaInvoicesRequest implements RequestInterface
 {
-    const REQUEST_URI = 'invoices/proforma.json';
 
-    /**
-     * @var ParametersInterface|null
-     */
+    private const REQUEST_URI = 'invoices/proforma.json';
+
+    /** @var \K0nias\FakturoidApi\Model\Invoice\Filter\ParametersInterface|null */
     private $parameters;
 
     /**
-     * GetInvoicesRequest constructor.
-     *
-     * @param ParametersInterface|null $parameters
+     * GetInvoicesRequest .
      */
-    public function __construct(ParametersInterface $parameters = null)
+    public function __construct(?ParametersInterface $parameters = null)
     {
         $this->parameters = $parameters;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUri(): string
     {
         return self::REQUEST_URI;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::GET();
@@ -48,4 +39,5 @@ final class GetProformaInvoicesRequest implements RequestInterface
     {
         return $this->parameters ? $this->parameters->getParameters() : [];
     }
+
 }

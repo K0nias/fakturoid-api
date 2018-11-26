@@ -2,19 +2,21 @@
 
 namespace K0nias\FakturoidApi\Model\Invoice;
 
-use K0nias\FakturoidApi\Exception\InvalidOptionParameterException;
+use DateTime;
+use DateTimeImmutable;
 
 final class Event
 {
-    const MARK_AS_SENT_EVENT = 'mark_as_sent';
-    const DELIVER_EVENT = 'deliver';
-    const PAY_EVENT = 'pay';
-    const PAY_PROFORMA_EVENT = 'pay_proforma';
-    const PAY_PARTIAL_PROFORMA_EVENT = 'pay_partial_proforma';
-    const REMOVE_PAYMENT_EVENT = 'remove_payment';
-    const DELIVER_REMINDER_EVENT = 'deliver_reminder';
-    const CANCEL_EVENT = 'cancel';
-    const UNDO_CANCEL_EVENT = 'undo_cancel';
+
+    public const MARK_AS_SENT_EVENT = 'mark_as_sent';
+    public const DELIVER_EVENT = 'deliver';
+    public const PAY_EVENT = 'pay';
+    public const PAY_PROFORMA_EVENT = 'pay_proforma';
+    public const PAY_PARTIAL_PROFORMA_EVENT = 'pay_partial_proforma';
+    public const REMOVE_PAYMENT_EVENT = 'remove_payment';
+    public const DELIVER_REMINDER_EVENT = 'deliver_reminder';
+    public const CANCEL_EVENT = 'cancel';
+    public const UNDO_CANCEL_EVENT = 'undo_cancel';
 
     private const AVAILABLE_EVENTS = [
         self::MARK_AS_SENT_EVENT,
@@ -28,125 +30,87 @@ final class Event
         self::UNDO_CANCEL_EVENT,
     ];
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $event;
 
-    /**
-     * @var array
-     */
+    /** @var mixed[] */
     private $optionalData = [];
 
-
-    /**
-     * @throws InvalidOptionParameterException
-     *
-     * @param string $event
-     */
     public function __construct(string $event)
     {
         $event = strtolower($event);
 
         if ( ! in_array($event, self::AVAILABLE_EVENTS)) {
-            throw InvalidOptionParameterException::createFrom($event, self::AVAILABLE_EVENTS, 'Invalid event. Given: "%s". Available events: "%s".');
+            throw \K0nias\FakturoidApi\Exception\InvalidOptionParameterException::createFrom($event, self::AVAILABLE_EVENTS, 'Invalid event. Given: "%s". Available events: "%s".');
         }
 
         $this->event = $event;
     }
 
+    /** @return mixed[] */
     public function getOptionalData(): array
     {
         return $this->optionalData;
     }
 
-    /**
-     * @return string
-     */
     public function getEvent(): string
     {
         return $this->event;
     }
 
-    /**
-     * @return self
-     */
     public static function markAsSent(): self
     {
         return new self(self::MARK_AS_SENT_EVENT);
     }
 
-    /**
-     * @return self
-     */
     public static function deliver(): self
     {
         return new self(self::DELIVER_EVENT);
     }
 
-    /**
-     * @return self
-     */
-    public static function pay(?\DateTimeImmutable $payDate = null, ?float $ammount = null): self
+    public static function pay(?DateTimeImmutable $payDate = null, ?float $ammount = null): self
     {
         $self = new self(self::PAY_EVENT);
 
-        if (null !== $payDate) {
-            $self->optionalData['paid_at'] = $payDate->format(\DateTime::ATOM);
+        if ($payDate !== null) {
+            $self->optionalData['paid_at'] = $payDate->format(DateTime::ATOM);
         }
 
-        if (null !== $ammount) {
+        if ($ammount !== null) {
             $self->optionalData['paid_amount'] = $ammount;
         }
 
         return $self;
     }
 
-    /**
-     * @return self
-     */
     public static function payProforma(): self
     {
         return new self(self::PAY_PROFORMA_EVENT);
     }
 
-    /**
-     * @return self
-     */
     public static function payPartialProforma(): self
     {
         return new self(self::PAY_PARTIAL_PROFORMA_EVENT);
     }
 
-    /**
-     * @return self
-     */
     public static function removePayment(): self
     {
         return new self(self::REMOVE_PAYMENT_EVENT);
     }
 
-    /**
-     * @return self
-     */
     public static function deliverReminder(): self
     {
         return new self(self::DELIVER_REMINDER_EVENT);
     }
 
-    /**
-     * @return self
-     */
     public static function cancel(): self
     {
         return new self(self::CANCEL_EVENT);
     }
 
-    /**
-     * @return self
-     */
     public static function undoCancel(): self
     {
         return new self(self::UNDO_CANCEL_EVENT);
     }
+
 }

@@ -5,9 +5,7 @@ namespace K0nias\FakturoidApi\Model\Message;
 final class OptionalParameters
 {
 
-    /**
-     * @var Parameters
-     */
+    /** @var \K0nias\FakturoidApi\Model\Message\Parameters */
     private $parameters;
 
     public function __construct()
@@ -16,11 +14,6 @@ final class OptionalParameters
     }
 
 
-    /**
-     * @param string $email
-     *
-     * @return self
-     */
     public function email(string $email): self
     {
         $this->parameters->email($email);
@@ -28,11 +21,6 @@ final class OptionalParameters
         return $this;
     }
 
-    /**
-     * @param string $email
-     *
-     * @return self
-     */
     public function emailCopy(string $email): self
     {
         $this->parameters->emailCopy($email);
@@ -40,11 +28,6 @@ final class OptionalParameters
         return $this;
     }
 
-    /**
-     * @param string $subject
-     *
-     * @return self
-     */
     public function subject(string $subject): self
     {
         $this->parameters->subject($subject);
@@ -52,11 +35,6 @@ final class OptionalParameters
         return $this;
     }
 
-    /**
-     * @param string $message
-     *
-     * @return self
-     */
     public function message(string $message): self
     {
         $this->parameters->message($message);
@@ -65,10 +43,11 @@ final class OptionalParameters
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getParameters(): array
     {
         return $this->parameters->getParameters();
     }
+
 }

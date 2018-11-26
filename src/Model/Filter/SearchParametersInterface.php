@@ -4,18 +4,12 @@ namespace K0nias\FakturoidApi\Model\Filter;
 
 interface SearchParametersInterface
 {
-    /**
-     * @param int $page
-     */
-    public function page(int $page);
 
-    /**
-     * @param string $query
-     */
-    public function query(string $query);
+    public function page(int $page): SearchParametersInterface;
 
-    /**
-     * @return array
-     */
+    public function query(string $query): SearchParametersInterface;
+
+    /** @return mixed[] */
     public function getParameters(): array;
+
 }

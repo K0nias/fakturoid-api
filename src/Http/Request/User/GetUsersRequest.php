@@ -7,19 +7,14 @@ use K0nias\FakturoidApi\Http\Request\RequestInterface;
 
 final class GetUsersRequest implements RequestInterface
 {
-    const REQUEST_URI = 'users.json';
 
-    /**
-     * {@inheritdoc}
-     */
+    private const REQUEST_URI = 'users.json';
+
     public function getUri(): string
     {
         return self::REQUEST_URI;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::GET();
@@ -32,4 +27,5 @@ final class GetUsersRequest implements RequestInterface
     {
         return [];
     }
+
 }

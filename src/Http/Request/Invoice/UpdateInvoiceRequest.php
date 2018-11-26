@@ -9,15 +9,13 @@ use K0nias\FakturoidApi\Model\Invoice\Parameters;
 
 final class UpdateInvoiceRequest implements RequestInterface
 {
-    const REQUEST_URI = 'invoices/%s.json';
 
-    /**
-     * @var Id
-     */
+    private const REQUEST_URI = 'invoices/%s.json';
+
+    /** @var \K0nias\FakturoidApi\Model\Invoice\Id */
     private $id;
-    /**
-     * @var Parameters
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Invoice\Parameters */
     private $parameters;
 
     public function __construct(Id $id, Parameters $parameters)
@@ -26,17 +24,11 @@ final class UpdateInvoiceRequest implements RequestInterface
         $this->parameters = $parameters;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUri(): string
     {
         return sprintf(self::REQUEST_URI, $this->id->getId());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::PATCH();
@@ -49,4 +41,5 @@ final class UpdateInvoiceRequest implements RequestInterface
     {
         return $this->parameters->getParameters();
     }
+
 }

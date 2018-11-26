@@ -2,12 +2,13 @@
 
 namespace K0nias\FakturoidApi\Tests\Model\Generator;
 
-use K0nias\FakturoidApi\Exception\InvalidParameterException;
+use DateTime;
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Currency\Currency;
+use K0nias\FakturoidApi\Model\Generator\Parameters;
 use K0nias\FakturoidApi\Model\Generator\Periodic;
 use K0nias\FakturoidApi\Model\Line\Line;
 use K0nias\FakturoidApi\Model\Line\LineCollection;
-use K0nias\FakturoidApi\Model\Generator\Parameters;
 use K0nias\FakturoidApi\Model\Payment\Method as PaymentMethod;
 use K0nias\FakturoidApi\Model\Subject\Id as SubjectId;
 use PHPUnit\Framework\TestCase;
@@ -15,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 class ParametersTest extends TestCase
 {
 
-    protected function createParameters()
+    protected function createParameters(): Parameters
     {
         $parameters = new Parameters();
 
@@ -32,20 +33,25 @@ class ParametersTest extends TestCase
         return $parameters;
     }
 
-    protected function getPeriodicParametersData()
+    /** @return mixed[] */
+    protected function getPeriodicParametersData(): array
     {
         $data = $this->getNotPeriodicParametersData();
 
-        $data = array_merge($data, [
-            'recurring' => true,
-            'start_date' => (new \DateTime)->format('Y-m-d'),
-            'months_period' => 10,
-        ]);
+        $data = array_merge(
+            $data,
+            [
+                'recurring' => true,
+                'start_date' => (new DateTime())->format('Y-m-d'),
+                'months_period' => 10,
+            ]
+        );
 
         return $data;
     }
 
-    protected function getNotPeriodicParametersData()
+    /** @return mixed[] */
+    protected function getNotPeriodicParametersData(): array
     {
         return [
             'name' => 'test name',
@@ -56,33 +62,35 @@ class ParametersTest extends TestCase
             'subject_id' => 10,
             'payment_method' => PaymentMethod::BANK_METHOD,
             'currency' => Currency::AUD_CURRENCY,
-            'lines' => [[
-                'name' => 'Work hour',
-                'unit_price' => 100,
-                'quantity' => 1.0,
-            ]],
+            'lines' => [
+                [
+                    'name' => 'Work hour',
+                    'unit_price' => 100,
+                    'quantity' => 1.0,
+                ],
+            ],
         ];
     }
 
-    public function testInvalidDueParameter()
+    public function testInvalidDueParameter(): void
     {
         $parameters = new Parameters();
 
-        $this->expectException(InvalidParameterException::class);
+        $this->expectException(\K0nias\FakturoidApi\Exception\InvalidParameterException::class);
 
         $parameters->due(0);
     }
 
-    public function testInvalidLines()
+    public function testInvalidLines(): void
     {
         $parameters = new Parameters();
 
-        $this->expectException(InvalidParameterException::class);
+        $this->expectException(\K0nias\FakturoidApi\Exception\InvalidParameterException::class);
 
         $parameters->lines('aa');
     }
 
-    public function testValidLines()
+    public function testValidLines(): void
     {
         $parameters = new Parameters();
 
@@ -103,10 +111,9 @@ class ParametersTest extends TestCase
         $this->assertEquals($lines, $parameters->getParameters()['lines']);
     }
 
-    public function testNotPeriodicParameters()
+    public function testNotPeriodicParameters(): void
     {
         $parameters = $this->createParameters();
-
 
         $testedData = $this->getNotPeriodicParametersData();
         $originalData = $parameters->getParameters();
@@ -114,18 +121,18 @@ class ParametersTest extends TestCase
         $this->assertEquals($testedData, $originalData);
     }
 
-    public function testPeriodicParameters()
+    public function testPeriodicParameters(): void
     {
-        $periodic = new Periodic(new \DateTimeImmutable(), 10);
+        $periodic = new Periodic(new DateTimeImmutable(), 10);
 
         $parameters = $this->createParameters();
 
         $parameters->periodical($periodic);
-
 
         $testedData = $this->getPeriodicParametersData();
         $originalData = $parameters->getParameters();
 
         $this->assertEquals($testedData, $originalData);
     }
+
 }

@@ -8,11 +8,10 @@ use K0nias\FakturoidApi\Model\Expense\Id;
 
 final class GetExpenseRequest implements RequestInterface
 {
-    const REQUEST_URI = 'expenses/%s.json';
 
-    /**
-     * @var Id
-     */
+    private const REQUEST_URI = 'expenses/%s.json';
+
+    /** @var \K0nias\FakturoidApi\Model\Expense\Id */
     private $id;
 
     public function __construct(Id $id)
@@ -20,17 +19,11 @@ final class GetExpenseRequest implements RequestInterface
         $this->id = $id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUri(): string
     {
         return sprintf(self::REQUEST_URI, $this->id->getId());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::GET();
@@ -43,6 +36,5 @@ final class GetExpenseRequest implements RequestInterface
     {
         return [];
     }
-
 
 }

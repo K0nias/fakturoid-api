@@ -6,20 +6,14 @@ use K0nias\FakturoidApi\Http\Method;
 
 interface RequestInterface
 {
-    const METHOD_GET = 'GET';
 
-    /**
-     * @return string
-     */
     public function getUri(): string;
 
-    /**
-     * @return Method
-     */
     public function getMethod(): Method;
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getData(): array;
+
 }

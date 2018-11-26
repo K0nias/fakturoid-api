@@ -6,8 +6,13 @@ use K0nias\FakturoidApi\Http\Response\CommonJsonResponse;
 
 final class GetRecurringGeneratorsResponse extends CommonJsonResponse
 {
+
+    /**
+     * @return mixed[][]
+     */
     public function getGenerators(): array
     {
         return $this->data;
     }
+
 }

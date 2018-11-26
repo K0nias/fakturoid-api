@@ -4,11 +4,13 @@ namespace K0nias\FakturoidApi\Http\Response;
 
 final class GetAccountResponse extends CommonJsonResponse
 {
+
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getAccount(): array
     {
         return $this->data;
     }
+
 }

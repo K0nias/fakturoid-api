@@ -6,9 +6,8 @@ use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
 
 final class SearchParameters implements SearchParametersInterface
 {
-    /**
-     * @var ImmutableParameterBag
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag */
     protected $parameters;
 
     public function __construct()
@@ -16,14 +15,7 @@ final class SearchParameters implements SearchParametersInterface
         $this->parameters = new ImmutableParameterBag();
     }
 
-    /**
-     * @throws \OutOfRangeException
-     *
-     * {@inheritdoc}
-     *
-     * @return self
-     */
-    public function page(int $page): self
+    public function page(int $page): SearchParametersInterface
     {
         if (1 > $page) {
             throw new \OutOfRangeException(sprintf('Page must be positive integer. Given "%s"', $page));
@@ -34,25 +26,17 @@ final class SearchParameters implements SearchParametersInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @return self
-     */
-    public function query(string $query): self
+    public function query(string $query): SearchParametersInterface
     {
         $this->parameters = $this->parameters->set('query', $query);
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    /** @return mixed[] */
     public function getParameters(): array
     {
         return $this->parameters->getAll();
     }
-
 
 }

@@ -4,26 +4,18 @@ namespace K0nias\FakturoidApi\Http\Response\Invoice;
 
 use K0nias\FakturoidApi\Http\Response\ResponseInterface;
 
-
 class GetInvoicePdfResponse implements ResponseInterface
 {
-    /**
-     * @var string
-     */
+
+    /** @var string */
     private $content;
 
-    /**
-     * @param string $content
-     */
     public function __construct(string $content)
     {
         $this->content = $content;
     }
 
 
-    /**
-     * @return string
-     */
     public function getPdfContent(): string
     {
         return $this->content;
@@ -34,10 +26,12 @@ class GetInvoicePdfResponse implements ResponseInterface
         return false;
     }
 
+    /**
+     * @return string[]
+     */
     public function getErrors(): array
     {
         return [];
     }
-
 
 }

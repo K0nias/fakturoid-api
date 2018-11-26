@@ -5,4 +5,6 @@ namespace K0nias\FakturoidApi\Http\Response\Generator;
 use K0nias\FakturoidApi\Http\Response\CommonJsonResponse;
 
 final class DeleteGeneratorResponse extends CommonJsonResponse
-{}
+{
+
+}

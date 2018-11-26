@@ -2,47 +2,46 @@
 
 namespace K0nias\FakturoidApi\Model\Currency;
 
-use K0nias\FakturoidApi\Exception\InvalidOptionParameterException;
-
 final class Currency implements CurrencyInterface
 {
-    const CZK_CURRENCY = 'CZK';
-    const EUR_CURRENCY = 'EUR';
-    const GBP_CURRENCY = 'GBP';
-    const USD_CURRENCY = 'USD';
-    const AUD_CURRENCY = 'AUD';
-    const BGN_CURRENCY = 'BGN';
-    const BRL_CURRENCY = 'BRL';
-    const CAD_CURRENCY = 'CAD';
-    const CHF_CURRENCY = 'CHF';
-    const CNY_CURRENCY = 'CNY';
-    const DKK_CURRENCY = 'DKK';
-    const HKD_CURRENCY = 'HKD';
-    const HRK_CURRENCY = 'HRK';
-    const HUF_CURRENCY = 'HUF';
-    const IDR_CURRENCY = 'IDR';
-    const ILS_CURRENCY = 'ILS';
-    const INR_CURRENCY = 'INR';
-    const JPY_CURRENCY = 'JPY';
-    const KWD_CURRENCY = 'KWD';
-    const MXN_CURRENCY = 'MXN';
-    const MYR_CURRENCY = 'MYR';
-    const PLN_CURRENCY = 'PLN';
-    const NOK_CURRENCY = 'NOK';
-    const NZD_CURRENCY = 'NZD';
-    const RON_CURRENCY = 'RON';
-    const RUB_CURRENCY = 'RUB';
-    const SEK_CURRENCY = 'SEK';
-    const SGD_CURRENCY = 'SGD';
-    const THB_CURRENCY = 'THB';
-    const TRY_CURRENCY = 'TRY';
 
-    const BTC_CURRENCY = 'BTC';
-    const ETH_CURRENCY = 'ETH';
-    const LTC_CURRENCY = 'LTC';
-    const XMR_CURRENCY = 'XMR';
+    public const CZK_CURRENCY = 'CZK';
+    public const EUR_CURRENCY = 'EUR';
+    public const GBP_CURRENCY = 'GBP';
+    public const USD_CURRENCY = 'USD';
+    public const AUD_CURRENCY = 'AUD';
+    public const BGN_CURRENCY = 'BGN';
+    public const BRL_CURRENCY = 'BRL';
+    public const CAD_CURRENCY = 'CAD';
+    public const CHF_CURRENCY = 'CHF';
+    public const CNY_CURRENCY = 'CNY';
+    public const DKK_CURRENCY = 'DKK';
+    public const HKD_CURRENCY = 'HKD';
+    public const HRK_CURRENCY = 'HRK';
+    public const HUF_CURRENCY = 'HUF';
+    public const IDR_CURRENCY = 'IDR';
+    public const ILS_CURRENCY = 'ILS';
+    public const INR_CURRENCY = 'INR';
+    public const JPY_CURRENCY = 'JPY';
+    public const KWD_CURRENCY = 'KWD';
+    public const MXN_CURRENCY = 'MXN';
+    public const MYR_CURRENCY = 'MYR';
+    public const PLN_CURRENCY = 'PLN';
+    public const NOK_CURRENCY = 'NOK';
+    public const NZD_CURRENCY = 'NZD';
+    public const RON_CURRENCY = 'RON';
+    public const RUB_CURRENCY = 'RUB';
+    public const SEK_CURRENCY = 'SEK';
+    public const SGD_CURRENCY = 'SGD';
+    public const THB_CURRENCY = 'THB';
+    public const TRY_CURRENCY = 'TRY';
 
-    const AVAILABLE_CURRENCIES = [
+    public const BTC_CURRENCY = 'BTC';
+    public const ETH_CURRENCY = 'ETH';
+    public const LTC_CURRENCY = 'LTC';
+    public const XMR_CURRENCY = 'XMR';
+
+    private const AVAILABLE_CURRENCIES = [
         self::CZK_CURRENCY,
         self::EUR_CURRENCY,
         self::GBP_CURRENCY,
@@ -79,37 +78,31 @@ final class Currency implements CurrencyInterface
         self::XMR_CURRENCY,
     ];
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $code;
 
-    /**
-     * Currency constructor.
-     *
-     * @param string $code
-     */
     public function __construct(string $code)
     {
         $code = strtoupper($code);
 
         if ( ! in_array($code, self::AVAILABLE_CURRENCIES)) {
-            throw InvalidOptionParameterException::createFrom($code, self::AVAILABLE_CURRENCIES, 'Invalid currency. Given: "%s". Available currencies: "%s".');
+            throw \K0nias\FakturoidApi\Exception\InvalidOptionParameterException::createFrom(
+                $code,
+                self::AVAILABLE_CURRENCIES,
+                'Invalid currency. Given: "%s". Available currencies: "%s".'
+            );
         }
 
         $this->code = $code;
     }
 
-    /**
-     * @return string
-     */
     public function getCode(): string
     {
         return $this->code;
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function czk(): self
     {
@@ -117,7 +110,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function eur(): self
     {
@@ -125,7 +118,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function gbp(): self
     {
@@ -133,7 +126,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function usd(): self
     {
@@ -141,7 +134,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function aud(): self
     {
@@ -149,7 +142,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function bgn(): self
     {
@@ -157,7 +150,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function brl(): self
     {
@@ -165,7 +158,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function cad(): self
     {
@@ -173,7 +166,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function chf(): self
     {
@@ -181,7 +174,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function cny(): self
     {
@@ -189,7 +182,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function dkk(): self
     {
@@ -197,7 +190,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function hkd(): self
     {
@@ -205,7 +198,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function hrk(): self
     {
@@ -213,7 +206,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function huf(): self
     {
@@ -221,7 +214,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function idr(): self
     {
@@ -229,7 +222,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function ils(): self
     {
@@ -237,7 +230,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function inr(): self
     {
@@ -245,7 +238,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function jpy(): self
     {
@@ -253,7 +246,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function kwd(): self
     {
@@ -261,7 +254,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function mxn(): self
     {
@@ -269,7 +262,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function myr(): self
     {
@@ -277,7 +270,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function pln(): self
     {
@@ -285,7 +278,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function nok(): self
     {
@@ -293,7 +286,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function nzd(): self
     {
@@ -301,7 +294,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function ron(): self
     {
@@ -309,7 +302,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function rub(): self
     {
@@ -317,7 +310,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function sek(): self
     {
@@ -325,7 +318,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function sgd(): self
     {
@@ -333,7 +326,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function thb(): self
     {
@@ -341,7 +334,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function try(): self
     {
@@ -349,7 +342,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function btc(): self
     {
@@ -357,7 +350,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function eth(): self
     {
@@ -365,7 +358,7 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function ltc(): self
     {
@@ -373,12 +366,11 @@ final class Currency implements CurrencyInterface
     }
 
     /**
-     * @return Currency
+     * @return \K0nias\FakturoidApi\Model\Currency\Currency
      */
     public static function xmr(): self
     {
         return new self(self::XMR_CURRENCY);
     }
-
 
 }

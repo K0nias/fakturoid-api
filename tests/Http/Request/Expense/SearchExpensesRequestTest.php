@@ -8,7 +8,8 @@ use PHPUnit\Framework\TestCase;
 
 class SearchExpensesRequestTest extends TestCase
 {
-    public function testParameters()
+
+    public function testParameters(): void
     {
         $query = 'query';
         $page = 2;
@@ -29,4 +30,5 @@ class SearchExpensesRequestTest extends TestCase
         $this->assertSame($page, $data['page']);
         $this->assertSame($query, $data['query']);
     }
+
 }

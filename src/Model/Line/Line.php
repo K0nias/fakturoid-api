@@ -2,42 +2,24 @@
 
 namespace K0nias\FakturoidApi\Model\Line;
 
-use K0nias\FakturoidApi\Exception\InvalidParameterException;
-
 final class Line
 {
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $name;
-    /**
-     * @var float
-     */
+
+    /** @var float */
     private $unitPrice;
-    /**
-     * @var float
-     */
+
+    /** @var float */
     private $quantity;
-    /**
-     * @var null|string
-     */
+
+    /** @var string|null */
     private $unit;
-    /**
-     * @var float|null
-     */
+
+    /** @var float|null */
     private $vatRate;
 
-
-    /**
-     * @throws InvalidParameterException
-     *
-     * @param string      $name
-     * @param float       $unitPrice
-     * @param float       $quantity
-     * @param null|string $unit
-     * @param float|null  $vatRate
-     */
     public function __construct(string $name, float $unitPrice, float $quantity = 1.0, ?string $unit = null, ?float $vatRate = null)
     {
         $errors = [];
@@ -50,12 +32,12 @@ final class Line
             $errors[] = sprintf('Quantity must be positive float. Given: "%s".', $quantity);
         }
 
-        if (null !== $vatRate && $vatRate < 1) {
+        if ($vatRate !== null && $vatRate < 1) {
             $errors[] = sprintf('Vat rate must be positive integer. Given: "%s".', $vatRate);
         }
 
         if ($errors) {
-            throw new InvalidParameterException(implode(' ', $errors));
+            throw new \K0nias\FakturoidApi\Exception\InvalidParameterException(implode(' ', $errors));
         }
 
         $this->name = $name;
@@ -65,9 +47,7 @@ final class Line
         $this->vatRate = $vatRate;
     }
 
-    /**
-     * @return array
-     */
+    /** @return mixed[] [name, quantity, unit_price, ?unit_name, ?vat_rate] */
     public function getData(): array
     {
         $data = [
@@ -86,6 +66,5 @@ final class Line
 
         return $data;
     }
-
 
 }

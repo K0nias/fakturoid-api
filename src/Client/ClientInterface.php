@@ -7,10 +7,7 @@ use K0nias\FakturoidApi\Http\Response\Response;
 
 interface ClientInterface
 {
-    /**
-     * @param RequestInterface $request
-     *
-     * @return Response
-     */
+
     public function processRequest(RequestInterface $request): Response;
+
 }

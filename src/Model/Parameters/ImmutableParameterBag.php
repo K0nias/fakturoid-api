@@ -2,19 +2,14 @@
 
 namespace K0nias\FakturoidApi\Model\Parameters;
 
-
 final class ImmutableParameterBag
 {
-    /**
-     * @var array
-     */
+
+    /** @var mixed[] */
     private $parameters;
 
-
     /**
-     * ImmutableParameterBag constructor.
-     *
-     * @param array $parameters
+     * @param mixed[] $parameters
      */
     public function __construct(array $parameters = [])
     {
@@ -22,10 +17,7 @@ final class ImmutableParameterBag
     }
 
     /**
-     * @param string $name
-     * @param mixed  $value
-     *
-     * @return ImmutableParameterBag
+     * @param mixed $value
      */
     public function set(string $name, $value): ImmutableParameterBag
     {
@@ -33,10 +25,6 @@ final class ImmutableParameterBag
     }
 
     /**
-     * @param string $key
-     *
-     * @throws \OutOfBoundsException
-     *
      * @return mixed
      */
     public function get(string $key)
@@ -48,21 +36,15 @@ final class ImmutableParameterBag
         return $this->parameters[$key];
     }
 
-    /**
-     * @return array
-     */
+    /** @return mixed[] */
     public function getAll(): array
     {
         return $this->parameters;
     }
 
-    /**
-     * @param string $key
-     *
-     * @return bool
-     */
     public function has(string $key): bool
     {
         return key_exists($key, $this->parameters);
     }
+
 }

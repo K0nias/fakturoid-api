@@ -2,5 +2,7 @@
 
 namespace K0nias\FakturoidApi\Exception;
 
-final class InvalidAuthorizationException extends FakturoidApiException
-{}
+final class InvalidAuthorizationException extends \K0nias\FakturoidApi\Exception\FakturoidApiException
+{
+
+}

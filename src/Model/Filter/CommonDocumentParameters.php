@@ -2,15 +2,15 @@
 
 namespace K0nias\FakturoidApi\Model\Filter;
 
+use DateTime;
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
 use K0nias\FakturoidApi\Model\Subject\Id;
 
 final class CommonDocumentParameters implements DocumentParametersInterface
 {
 
-    /**
-     * @var ImmutableParameterBag
-     */
+    /** @var \K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag */
     protected $parameters;
 
     public function __construct()
@@ -18,9 +18,6 @@ final class CommonDocumentParameters implements DocumentParametersInterface
         $this->parameters = new ImmutableParameterBag();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function subject(Id $subjectId): DocumentParametersInterface
     {
         $this->parameters = $this->parameters->set('subject_id', $subjectId->getId());
@@ -28,9 +25,6 @@ final class CommonDocumentParameters implements DocumentParametersInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function number(string $number): DocumentParametersInterface
     {
         $this->parameters = $this->parameters->set('number', $number);
@@ -38,31 +32,20 @@ final class CommonDocumentParameters implements DocumentParametersInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function updatedSince(\DateTimeImmutable $date): DocumentParametersInterface
+    public function updatedSince(DateTimeImmutable $date): DocumentParametersInterface
     {
-        $this->parameters = $this->parameters->set('updated_since', $date->format(\DateTime::ATOM));
+        $this->parameters = $this->parameters->set('updated_since', $date->format(DateTime::ATOM));
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function since(\DateTimeImmutable $date): DocumentParametersInterface
+    public function since(DateTimeImmutable $date): DocumentParametersInterface
     {
-        $this->parameters = $this->parameters->set('since', $date->format(\DateTime::ATOM));
+        $this->parameters = $this->parameters->set('since', $date->format(DateTime::ATOM));
 
         return $this;
     }
 
-    /**
-     * @throws \OutOfRangeException
-     *
-     * {@inheritdoc}
-     */
     public function page(int $page): DocumentParametersInterface
     {
         if (1 > $page) {
@@ -81,4 +64,5 @@ final class CommonDocumentParameters implements DocumentParametersInterface
     {
         return $this->parameters->getAll();
     }
+
 }

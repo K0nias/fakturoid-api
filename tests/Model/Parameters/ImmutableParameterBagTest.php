@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace K0nias\FakturoidApi\Tests\Model\Parameters;
 
@@ -7,7 +7,8 @@ use PHPUnit\Framework\TestCase;
 
 class ImmutableParameterBagTest extends TestCase
 {
-    public function testTestImmutability()
+
+    public function testTestImmutability(): void
     {
         $parameterBag = new ImmutableParameterBag();
         $parameterBag2 = $parameterBag->set('test', 1);
@@ -15,7 +16,7 @@ class ImmutableParameterBagTest extends TestCase
         $this->assertTrue($parameterBag !== $parameterBag2);
     }
 
-    public function testGetSingleParameter()
+    public function testGetSingleParameter(): void
     {
         $parameterBag = new ImmutableParameterBag();
         $parameterBag = $parameterBag->set('key', 1);
@@ -23,7 +24,7 @@ class ImmutableParameterBagTest extends TestCase
         $this->assertEquals(1, $parameterBag->get('key'));
     }
 
-    public function testExistingParameterKey()
+    public function testExistingParameterKey(): void
     {
         $parameterBag = new ImmutableParameterBag();
         $parameterBag = $parameterBag->set('key', 1);
@@ -31,7 +32,7 @@ class ImmutableParameterBagTest extends TestCase
         $this->assertEquals(1, $parameterBag->get('key'));
     }
 
-    public function testNotExistingParameterKey()
+    public function testNotExistingParameterKey(): void
     {
         $parameterBag = new ImmutableParameterBag();
 
@@ -39,4 +40,5 @@ class ImmutableParameterBagTest extends TestCase
 
         $parameterBag->get('not_existing_parameter_key');
     }
+
 }

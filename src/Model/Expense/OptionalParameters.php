@@ -2,13 +2,13 @@
 
 namespace K0nias\FakturoidApi\Model\Expense;
 
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Payment\Method as PaymentMethod;
 
 final class OptionalParameters
 {
-    /**
-     * @var Parameters
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Expense\Parameters */
     private $parameters;
 
     public function __construct()
@@ -16,11 +16,6 @@ final class OptionalParameters
         $this->parameters = new Parameters();
     }
 
-    /**
-     * @param PaymentMethod $paymentMethod
-     *
-     * @return self
-     */
     public function paymentMethod(PaymentMethod $paymentMethod): self
     {
         $this->parameters->paymentMethod($paymentMethod);
@@ -28,11 +23,6 @@ final class OptionalParameters
         return $this;
     }
 
-    /**
-     * @param string $number
-     *
-     * @return self
-     */
     public function number(string $number): self
     {
         $this->parameters->number($number);
@@ -40,11 +30,6 @@ final class OptionalParameters
         return $this;
     }
 
-    /**
-     * @param string $originalNumber
-     *
-     * @return self
-     */
     public function originalNumber(string $originalNumber): self
     {
         $this->parameters->originalNumber($originalNumber);
@@ -52,12 +37,7 @@ final class OptionalParameters
         return $this;
     }
 
-    /**
-     * @param \DateTimeImmutable $issuedDate
-     *
-     * @return self
-     */
-    public function issuedDate(\DateTimeImmutable $issuedDate): self
+    public function issuedDate(DateTimeImmutable $issuedDate): self
     {
         $this->parameters->issuedDate($issuedDate);
 
@@ -65,10 +45,11 @@ final class OptionalParameters
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getParameters(): array
     {
         return $this->parameters->getParameters();
     }
+
 }

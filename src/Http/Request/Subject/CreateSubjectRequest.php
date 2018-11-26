@@ -8,11 +8,10 @@ use K0nias\FakturoidApi\Model\Subject\Subject;
 
 final class CreateSubjectRequest implements RequestInterface
 {
-    const REQUEST_URI = 'subjects.json';
 
-    /**
-     * @var Subject
-     */
+    private const REQUEST_URI = 'subjects.json';
+
+    /** @var \K0nias\FakturoidApi\Model\Subject\Subject */
     private $subject;
 
     public function __construct(Subject $subject)
@@ -20,17 +19,11 @@ final class CreateSubjectRequest implements RequestInterface
         $this->subject = $subject;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUri(): string
     {
         return self::REQUEST_URI;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::POST();
@@ -43,4 +36,5 @@ final class CreateSubjectRequest implements RequestInterface
     {
         return $this->subject->getData();
     }
+
 }

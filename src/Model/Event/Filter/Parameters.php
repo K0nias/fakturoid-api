@@ -2,14 +2,15 @@
 
 namespace K0nias\FakturoidApi\Model\Event\Filter;
 
+use DateTime;
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
 use K0nias\FakturoidApi\Model\Subject\Id;
 
 final class Parameters implements ParametersInterface
 {
-    /**
-     * @var ImmutableParameterBag
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag */
     protected $parameters;
 
     public function __construct()
@@ -17,9 +18,6 @@ final class Parameters implements ParametersInterface
         $this->parameters = new ImmutableParameterBag();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function subject(Id $subjectId): ParametersInterface
     {
         $this->parameters = $this->parameters->set('subject_id', $subjectId->getId());
@@ -27,21 +25,13 @@ final class Parameters implements ParametersInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function since(\DateTimeImmutable $date): ParametersInterface
+    public function since(DateTimeImmutable $date): ParametersInterface
     {
-        $this->parameters = $this->parameters->set('since', $date->format(\DateTime::ATOM));
+        $this->parameters = $this->parameters->set('since', $date->format(DateTime::ATOM));
 
         return $this;
     }
 
-    /**
-     * @throws \OutOfRangeException
-     *
-     * {@inheritdoc}
-     */
     public function page(int $page): ParametersInterface
     {
         if (1 > $page) {

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace K0nias\FakturoidApi\Tests\Model\Filter;
 
@@ -7,10 +7,12 @@ use PHPUnit\Framework\TestCase;
 
 class YearTests extends TestCase
 {
-    public function testYear()
+
+    public function testYear(): void
     {
         $year = new Year(2015);
 
         $this->assertSame(2015, $year->getYear());
     }
+
 }

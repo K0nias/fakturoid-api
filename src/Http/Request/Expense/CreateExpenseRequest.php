@@ -8,10 +8,10 @@ use K0nias\FakturoidApi\Model\Expense\Expense;
 
 final class CreateExpenseRequest implements RequestInterface
 {
-    const REQUEST_URI = 'expenses.json';
-    /**
-     * @var Expense
-     */
+
+    private const REQUEST_URI = 'expenses.json';
+
+    /** @var \K0nias\FakturoidApi\Model\Expense\Expense */
     private $expense;
 
     public function __construct(Expense $expense)
@@ -19,17 +19,11 @@ final class CreateExpenseRequest implements RequestInterface
         $this->expense = $expense;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUri(): string
     {
         return self::REQUEST_URI;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::POST();
@@ -42,4 +36,5 @@ final class CreateExpenseRequest implements RequestInterface
     {
         return $this->expense->getData();
     }
+
 }

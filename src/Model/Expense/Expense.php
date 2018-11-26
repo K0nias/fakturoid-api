@@ -2,33 +2,22 @@
 
 namespace K0nias\FakturoidApi\Model\Expense;
 
-use K0nias\FakturoidApi\Model\Line\Line;
-use K0nias\FakturoidApi\Model\Line\LineCollection;
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Subject\Id;
 
 final class Expense
 {
-    /**
-     * @var Parameters
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Expense\Parameters */
     private $parameters;
-    /**
-     * @var OptionalParameters|null
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Expense\OptionalParameters|null */
     private $optionalParameters;
-    /**
-     * @var \DateTimeImmutable
-     */
-    private $dueDate;
-
 
     /**
-     * @param Id                      $subjectId
-     * @param Line|LineCollection     $lines
-     * @param \DateTimeImmutable      $dueDate
-     * @param OptionalParameters|null $optionalParameters
+     * @param \K0nias\FakturoidApi\Model\Line\Line|\K0nias\FakturoidApi\Model\Line\LineCollection $lines
      */
-    public function __construct(Id $subjectId, $lines, \DateTimeImmutable $dueDate, ?OptionalParameters $optionalParameters = null)
+    public function __construct(Id $subjectId, $lines, DateTimeImmutable $dueDate, ?OptionalParameters $optionalParameters = null)
     {
         $parameters = new Parameters();
 
@@ -38,11 +27,10 @@ final class Expense
 
         $this->parameters = $parameters;
         $this->optionalParameters = $optionalParameters;
-        $this->dueDate = $dueDate;
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getData(): array
     {
@@ -50,10 +38,11 @@ final class Expense
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     protected function getOptionalParameters(): array
     {
         return $this->optionalParameters ? $this->optionalParameters->getParameters() : [];
     }
+
 }

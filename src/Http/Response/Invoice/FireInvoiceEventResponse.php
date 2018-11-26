@@ -5,4 +5,6 @@ namespace K0nias\FakturoidApi\Http\Response\Invoice;
 use K0nias\FakturoidApi\Http\Response\CommonJsonResponse;
 
 final class FireInvoiceEventResponse extends CommonJsonResponse
-{}
+{
+
+}

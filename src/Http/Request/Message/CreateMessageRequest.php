@@ -9,33 +9,21 @@ use K0nias\FakturoidApi\Model\Message\Message;
 final class CreateMessageRequest implements RequestInterface
 {
 
-    const REQUEST_URI = 'invoices/%s/message.json';
+    private const REQUEST_URI = 'invoices/%s/message.json';
 
-    /**
-     * @var Message
-     */
+    /** @var \K0nias\FakturoidApi\Model\Message\Message */
     private $message;
 
-
-    /**
-     * @param Message $message
-     */
     public function __construct(Message $message)
     {
         $this->message = $message;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUri(): string
     {
         return sprintf(self::REQUEST_URI, $this->message->getInvoiceId()->getId());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::POST();
@@ -48,4 +36,5 @@ final class CreateMessageRequest implements RequestInterface
     {
         return $this->message->getData();
     }
+
 }

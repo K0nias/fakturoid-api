@@ -9,7 +9,8 @@ use PHPUnit\Framework\TestCase;
 class ParametersTest extends TestCase
 {
 
-    public function getFullParametersData()
+    /** @return string[] */
+    public function getFullParametersData(): array
     {
         return [
             'name' => 'MICROSOFT s.r.o.',
@@ -29,11 +30,11 @@ class ParametersTest extends TestCase
             'email' => 'test@test.cz',
             'email_copy' => 'test2@test.cz',
             'phone' => '+420112233445',
-            'web' => 'www.example.cz'
+            'web' => 'www.example.cz',
         ];
     }
 
-    public function testParameters()
+    public function testParameters(): void
     {
         $parameters = new Parameters();
 
@@ -54,13 +55,12 @@ class ParametersTest extends TestCase
             ->email('test@test.cz')
             ->emailCopy('test2@test.cz')
             ->phone('+420112233445')
-            ->web('www.example.cz')
-            ;
-
+            ->web('www.example.cz');
 
         $testedData = $this->getFullParametersData();
         $originalData = $parameters->getParameters();
 
         $this->assertEquals($testedData, $originalData);
     }
+
 }

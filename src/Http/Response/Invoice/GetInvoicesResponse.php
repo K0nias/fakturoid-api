@@ -6,8 +6,13 @@ use K0nias\FakturoidApi\Http\Response\CommonJsonResponse;
 
 final class GetInvoicesResponse extends CommonJsonResponse
 {
+
+    /**
+     * @return mixed[][]
+     */
     public function getInvoices(): array
     {
         return $this->data;
     }
+
 }

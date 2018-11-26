@@ -8,10 +8,10 @@ use K0nias\FakturoidApi\Model\Generator\Generator;
 
 final class CreateGeneratorRequest implements RequestInterface
 {
-    const REQUEST_URI = 'generators.json';
-    /**
-     * @var Generator
-     */
+
+    private const REQUEST_URI = 'generators.json';
+
+    /** @var \K0nias\FakturoidApi\Model\Generator\Generator */
     private $generator;
 
     public function __construct(Generator $generator)
@@ -19,17 +19,11 @@ final class CreateGeneratorRequest implements RequestInterface
         $this->generator = $generator;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUri(): string
     {
         return self::REQUEST_URI;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::POST();
@@ -42,4 +36,5 @@ final class CreateGeneratorRequest implements RequestInterface
     {
         return $this->generator->getData();
     }
+
 }

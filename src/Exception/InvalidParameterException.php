@@ -2,6 +2,7 @@
 
 namespace K0nias\FakturoidApi\Exception;
 
+final class InvalidParameterException extends \K0nias\FakturoidApi\Exception\FakturoidApiException
+{
 
-final class InvalidParameterException extends FakturoidApiException
-{}
+}

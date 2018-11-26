@@ -8,32 +8,22 @@ use K0nias\FakturoidApi\Model\Generator\Filter\ParametersInterface;
 
 final class GetGeneratorsRequest implements RequestInterface
 {
-    const REQUEST_URI = 'generators.json';
 
-    /**
-     * @var ParametersInterface|null
-     */
+    private const REQUEST_URI = 'generators.json';
+
+    /** @var \K0nias\FakturoidApi\Model\Generator\Filter\ParametersInterface|null */
     private $parameters;
 
-    /**
-     * @param ParametersInterface|null $parameters
-     */
-    public function __construct(ParametersInterface $parameters = null)
+    public function __construct(?ParametersInterface $parameters = null)
     {
         $this->parameters = $parameters;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUri(): string
     {
         return self::REQUEST_URI;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::GET();
@@ -46,4 +36,5 @@ final class GetGeneratorsRequest implements RequestInterface
     {
         return $this->parameters ? $this->parameters->getParameters() : [];
     }
+
 }

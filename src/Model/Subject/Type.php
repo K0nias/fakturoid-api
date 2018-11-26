@@ -2,13 +2,12 @@
 
 namespace K0nias\FakturoidApi\Model\Subject;
 
-use K0nias\FakturoidApi\Exception\InvalidOptionParameterException;
-
 final class Type
 {
-    const CUSTOMER_TYPE = 'customer';
-    const SUPPLIER_TYPE = 'supplier';
-    const BOTH_TYPE = 'both';
+
+    public const CUSTOMER_TYPE = 'customer';
+    public const SUPPLIER_TYPE = 'supplier';
+    public const BOTH_TYPE = 'both';
 
     private const AVAILABLE_TYPES = [
         self::CUSTOMER_TYPE,
@@ -16,38 +15,27 @@ final class Type
         self::BOTH_TYPE,
     ];
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $type;
 
-
-    /**
-     * @throws InvalidOptionParameterException
-     *
-     * @param string $type
-     */
     public function __construct(string $type)
     {
         $type = strtolower($type);
 
         if ( ! in_array($type, self::AVAILABLE_TYPES)) {
-            throw InvalidOptionParameterException::createFrom($type, self::AVAILABLE_TYPES, 'Invalid type. Given: "%s". Available types: "%s".');
+            throw \K0nias\FakturoidApi\Exception\InvalidOptionParameterException::createFrom($type, self::AVAILABLE_TYPES, 'Invalid type. Given: "%s". Available types: "%s".');
         }
 
         $this->type = $type;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
     /**
-     * @return Type
+     * @return \K0nias\FakturoidApi\Model\Subject\Type
      */
     public static function customer(): self
     {
@@ -55,7 +43,7 @@ final class Type
     }
 
     /**
-     * @return Type
+     * @return \K0nias\FakturoidApi\Model\Subject\Type
      */
     public static function supplier(): self
     {
@@ -63,10 +51,11 @@ final class Type
     }
 
     /**
-     * @return Type
+     * @return \K0nias\FakturoidApi\Model\Subject\Type
      */
     public static function both(): self
     {
         return new self(self::BOTH_TYPE);
     }
+
 }

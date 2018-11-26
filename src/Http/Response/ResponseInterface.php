@@ -7,6 +7,9 @@ interface ResponseInterface
 
     public function hasError(): bool;
 
+    /**
+     * @return string[]
+     */
     public function getErrors(): array;
 
 }

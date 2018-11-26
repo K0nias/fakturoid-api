@@ -7,6 +7,7 @@ use K0nias\FakturoidApi\Http\Request\RequestInterface;
 
 class MissingResponseRequestMock implements RequestInterface
 {
+
     public function getUri(): string
     {
         return '';
@@ -17,6 +18,7 @@ class MissingResponseRequestMock implements RequestInterface
         return Method::GET();
     }
 
+    /** @return mixed[] */
     public function getData(): array
     {
         return [];

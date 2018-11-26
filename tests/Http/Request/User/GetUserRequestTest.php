@@ -8,10 +8,12 @@ use PHPUnit\Framework\TestCase;
 
 class GetUserRequestTest extends TestCase
 {
-    public function testUri()
+
+    public function testUri(): void
     {
         $request = new GetUserRequest(new Id(1));
 
         $this->assertSame('users/1.json', $request->getUri());
     }
+
 }

@@ -10,7 +10,8 @@ use PHPUnit\Framework\TestCase;
 class MessageTest extends TestCase
 {
 
-    protected function getTestingData()
+    /** @return string[] */
+    protected function getTestingData(): array
     {
         return [
             'email' => 'email@example.com',
@@ -20,7 +21,7 @@ class MessageTest extends TestCase
         ];
     }
 
-    public function createMessage()
+    public function createMessage(): Message
     {
         $optionalParameters = new OptionalParameters();
 
@@ -32,10 +33,11 @@ class MessageTest extends TestCase
         return new Message(new Id(1), $optionalParameters);
     }
 
-    public function testMessageData()
+    public function testMessageData(): void
     {
         $message = $this->createMessage();
 
         $this->assertEquals($this->getTestingData(), $message->getData());
     }
+
 }

@@ -2,17 +2,19 @@
 
 namespace K0nias\FakturoidApi\Tests\Model\Expense;
 
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Expense\OptionalParameters;
 use K0nias\FakturoidApi\Model\Payment\Method as PaymentMethod;
 use PHPUnit\Framework\TestCase;
 
 class OptionalParametersTest extends TestCase
 {
-    public function testParameters()
+
+    public function testParameters(): void
     {
         $parameters = new OptionalParameters();
 
-        $date = new \DateTimeImmutable();
+        $date = new DateTimeImmutable();
 
         $parameters->paymentMethod(PaymentMethod::cash())
             ->number('2018-0001')
@@ -26,4 +28,5 @@ class OptionalParametersTest extends TestCase
             'payment_method' => PaymentMethod::CASH_METHOD,
         ], $parameters->getParameters());
     }
+
 }

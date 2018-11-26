@@ -2,14 +2,14 @@
 
 namespace K0nias\FakturoidApi\Tests\Model\Message;
 
-use K0nias\FakturoidApi\Exception\InvalidParameterException;
 use K0nias\FakturoidApi\Model\Message\Parameters;
 use PHPUnit\Framework\TestCase;
 
 class ParametersTest extends TestCase
 {
 
-    public function getFullParametersData()
+    /** @return string[] */
+    public function getFullParametersData(): array
     {
         return [
             'email' => 'email@example.com',
@@ -19,25 +19,25 @@ class ParametersTest extends TestCase
         ];
     }
 
-    public function testInvalidEmailParameter()
+    public function testInvalidEmailParameter(): void
     {
         $parameters = new Parameters();
 
-        $this->expectException(InvalidParameterException::class);
+        $this->expectException(\K0nias\FakturoidApi\Exception\InvalidParameterException::class);
 
         $parameters->email('invalid_email');
     }
 
-    public function testInvalidEmailCopyParameter()
+    public function testInvalidEmailCopyParameter(): void
     {
         $parameters = new Parameters();
 
-        $this->expectException(InvalidParameterException::class);
+        $this->expectException(\K0nias\FakturoidApi\Exception\InvalidParameterException::class);
 
         $parameters->emailCopy('invalid_email');
     }
 
-    public function testParameters()
+    public function testParameters(): void
     {
         $parameters = new Parameters();
 
@@ -46,10 +46,10 @@ class ParametersTest extends TestCase
             ->subject('subject')
             ->message('message content');
 
-
         $testedData = $this->getFullParametersData();
         $originalData = $parameters->getParameters();
 
         $this->assertEquals($testedData, $originalData);
     }
+
 }

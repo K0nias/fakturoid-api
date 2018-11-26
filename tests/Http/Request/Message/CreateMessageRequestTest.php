@@ -9,10 +9,12 @@ use PHPUnit\Framework\TestCase;
 
 class CreateMessageRequestTest extends TestCase
 {
-    public function testUri()
+
+    public function testUri(): void
     {
         $request = new CreateMessageRequest(new Message(new Id(1)));
 
         $this->assertSame('invoices/1/message.json', $request->getUri());
     }
+
 }
