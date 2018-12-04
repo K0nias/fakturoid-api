@@ -53,7 +53,7 @@ final class Parameters
 
 
     /**
-     * @param \K0nias\FakturoidApi\Model\Line\Line|\K0nias\FakturoidApi\Model\Line\LineCollection $lines
+     * @param \K0nias\FakturoidApi\Model\Line\Line|\K0nias\FakturoidApi\Model\Line\LineCollection|mixed $lines
      */
     public function lines($lines): self
     {

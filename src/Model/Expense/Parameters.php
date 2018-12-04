@@ -29,7 +29,7 @@ final class Parameters
     }
 
     /**
-     * @param \K0nias\FakturoidApi\Model\Line\Line|\K0nias\FakturoidApi\Model\Line\LineCollection $lines
+     * @param \K0nias\FakturoidApi\Model\Line\Line|\K0nias\FakturoidApi\Model\Line\LineCollection|mixed $lines
      */
     public function lines($lines): self
     {
@@ -103,8 +103,13 @@ final class Parameters
         $parameters = $this->parameters->getAll();
 
         if ($this->parameters->has('due_on')) {
+            /**
+             * @see Parameters::dueDate
+             * @var \DateTime $dueDate this date will be always correct
+             */
             $dueDate = DateTime::createFromFormat('Y-m-d', $this->parameters->get('due_on'));
             $dueDate->setTime(0, 0, 0);
+
             $today = new DateTime();
             $today->setTime(0, 0, 0);
 
