@@ -2,40 +2,22 @@
 
 namespace K0nias\FakturoidApi\Model\Generator\Filter;
 
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Subject\Id;
 
 interface ParametersInterface
 {
-    /**
-     * @param int $page
-     *
-     * @return self
-     */
+
     public function page(int $page): self;
 
-    /**
-     * @param \DateTimeImmutable $date
-     *
-     * @return self
-     */
-    public function since(\DateTimeImmutable $date): self;
+    public function since(DateTimeImmutable $date): self;
 
-    /**
-     * @param \DateTimeImmutable $date
-     *
-     * @return self
-     */
-    public function updatedSince(\DateTimeImmutable $date): self;
+    public function updatedSince(DateTimeImmutable $date): self;
 
-    /**
-     * @param Id $subjectId
-     *
-     * @return self
-     */
     public function subject(Id $subjectId): self;
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getParameters(): array;
 

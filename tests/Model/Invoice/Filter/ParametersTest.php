@@ -2,20 +2,23 @@
 
 namespace K0nias\FakturoidApi\Tests\Model\Invoice\Filter;
 
+use DateTime;
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Invoice\Filter\Parameters;
 use K0nias\FakturoidApi\Model\Invoice\Status;
 use K0nias\FakturoidApi\Model\Subject\Id;
 use PHPUnit\Framework\TestCase;
 
-class CommonParametersTest extends TestCase
+class ParametersTest extends TestCase
 {
-    public function testParametersValue()
+
+    public function testParametersValue(): void
     {
         $status = Status::open();
         $subject = new Id(1);
         $page = 1;
-        $sinceDate = new \DateTimeImmutable();
-        $updatedSinceDate = new \DateTimeImmutable();
+        $sinceDate = new DateTimeImmutable();
+        $updatedSinceDate = new DateTimeImmutable();
         $custom = '1111222';
         $number = '2018-0005';
 
@@ -32,10 +35,11 @@ class CommonParametersTest extends TestCase
             'status' => $status->getStatus(),
             'subject_id' => $subject->getId(),
             'page' => $page,
-            'since' => $sinceDate->format(\DateTime::ATOM),
-            'updated_since' => $updatedSinceDate->format(\DateTime::ATOM),
+            'since' => $sinceDate->format(DateTime::ATOM),
+            'updated_since' => $updatedSinceDate->format(DateTime::ATOM),
             'custom_id' => $custom,
             'number' => $number,
         ], $parametersFilter->getParameters());
     }
+
 }

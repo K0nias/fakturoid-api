@@ -12,4 +12,5 @@ final class CreateSubjectResponse extends CommonJsonResponse
     {
         return new Id($this->data['id']);
     }
+
 }

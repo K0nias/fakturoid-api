@@ -8,10 +8,10 @@ use K0nias\FakturoidApi\Model\Invoice\Invoice;
 
 final class CreateInvoiceRequest implements RequestInterface
 {
-    const REQUEST_URI = 'invoices.json';
-    /**
-     * @var Invoice
-     */
+
+    private const REQUEST_URI = 'invoices.json';
+
+    /** @var \K0nias\FakturoidApi\Model\Invoice\Invoice */
     private $invoice;
 
     public function __construct(Invoice $invoice)
@@ -19,17 +19,11 @@ final class CreateInvoiceRequest implements RequestInterface
         $this->invoice = $invoice;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUri(): string
     {
         return self::REQUEST_URI;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::POST();
@@ -42,4 +36,5 @@ final class CreateInvoiceRequest implements RequestInterface
     {
         return $this->invoice->getData();
     }
+
 }

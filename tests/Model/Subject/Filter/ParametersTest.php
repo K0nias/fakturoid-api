@@ -2,15 +2,18 @@
 
 namespace K0nias\FakturoidApi\Tests\Model\Subject\Filter;
 
+use DateTime;
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Subject\Filter\Parameters;
 use PHPUnit\Framework\TestCase;
 
 class ParametersTest extends TestCase
 {
-    public function testParametersValue()
+
+    public function testParametersValue(): void
     {
-        $sinceDate = new \DateTimeImmutable();
-        $updateSinceDate = new \DateTimeImmutable();
+        $sinceDate = new DateTimeImmutable();
+        $updateSinceDate = new DateTimeImmutable();
         $custom = '12';
         $page = 1;
 
@@ -23,8 +26,9 @@ class ParametersTest extends TestCase
         $this->assertEquals([
             'custom_id' => $custom,
             'page' => $page,
-            'since' => $sinceDate->format(\DateTime::ATOM),
-            'updated_since' => $updateSinceDate->format(\DateTime::ATOM),
+            'since' => $sinceDate->format(DateTime::ATOM),
+            'updated_since' => $updateSinceDate->format(DateTime::ATOM),
         ], $parametersFilter->getParameters());
     }
+
 }

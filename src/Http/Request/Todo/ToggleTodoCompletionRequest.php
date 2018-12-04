@@ -8,31 +8,22 @@ use K0nias\FakturoidApi\Model\Todo\Id;
 
 final class ToggleTodoCompletionRequest implements RequestInterface
 {
-    const REQUEST_URI = 'todos/%s/toggle_completion.json';
-    /**
-     * @var Id
-     */
+
+    private const REQUEST_URI = 'todos/%s/toggle_completion.json';
+
+    /** @var \K0nias\FakturoidApi\Model\Todo\Id */
     private $id;
 
-    /**
-     * @param Id $id
-     */
     public function __construct(Id $id)
     {
         $this->id = $id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUri(): string
     {
         return sprintf(self::REQUEST_URI, $this->id->getId());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::POST();
@@ -45,4 +36,5 @@ final class ToggleTodoCompletionRequest implements RequestInterface
     {
         return [];
     }
+
 }

@@ -2,24 +2,18 @@
 
 namespace K0nias\FakturoidApi\Model\Todo\Filter;
 
+use DateTimeImmutable;
+
 interface ParametersInterface
 {
-    /**
-     * @param int $page
-     *
-     * @return self
-     */
+
     public function page(int $page): self;
 
-    /**
-     * @param \DateTimeImmutable $date
-     *
-     * @return self
-     */
-    public function since(\DateTimeImmutable $date): self;
+    public function since(DateTimeImmutable $date): self;
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getParameters(): array;
+
 }

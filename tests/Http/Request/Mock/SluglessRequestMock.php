@@ -8,6 +8,7 @@ use K0nias\FakturoidApi\Http\Request\RequestInterface;
 
 class SluglessRequestMock implements RequestInterface, NotSlugAwareRequestInterface
 {
+
     public function getUri(): string
     {
         return 'slug_less_uri.json';
@@ -18,6 +19,7 @@ class SluglessRequestMock implements RequestInterface, NotSlugAwareRequestInterf
         return Method::GET();
     }
 
+    /** @return mixed[] */
     public function getData(): array
     {
         return [];

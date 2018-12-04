@@ -2,14 +2,12 @@
 
 namespace K0nias\FakturoidApi\Model\Invoice;
 
-use K0nias\FakturoidApi\Exception\InvalidParameterException;
+use DateTimeImmutable;
 
 final class OptionalParameters
 {
 
-    /**
-     * @var Parameters
-     */
+    /** @var \K0nias\FakturoidApi\Model\Invoice\Parameters */
     private $parameters;
 
     public function __construct()
@@ -17,13 +15,6 @@ final class OptionalParameters
         $this->parameters = new Parameters();
     }
 
-    /**
-     * @param int $due
-     *
-     * @throws InvalidParameterException
-     *
-     * @return self
-     */
     public function due(int $due): self
     {
         $this->parameters->due($due);
@@ -38,11 +29,6 @@ final class OptionalParameters
         return $this;
     }
 
-    /**
-     * @param string $number
-     *
-     * @return self
-     */
     public function number(string $number): self
     {
         $this->parameters->number($number);
@@ -57,11 +43,6 @@ final class OptionalParameters
         return $this;
     }
 
-    /**
-     * @param string $custom
-     *
-     * @return self
-     */
     public function custom(string $custom): self
     {
         $this->parameters->custom($custom);
@@ -76,23 +57,17 @@ final class OptionalParameters
         return $this;
     }
 
-    /**
-     * @param \DateTimeImmutable $issuedDate
-     *
-     * @return self
-     */
-    public function issuedDate(\DateTimeImmutable $issuedDate): self
+    public function issuedDate(DateTimeImmutable $issuedDate): self
     {
         $this->parameters->issuedDate($issuedDate);
 
         return $this;
     }
 
-    /**
-     * @return array
-     */
+    /** @return mixed[] */
     public function getParameters(): array
     {
         return $this->parameters->getParameters();
     }
+
 }

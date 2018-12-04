@@ -8,10 +8,12 @@ use PHPUnit\Framework\TestCase;
 
 class GetInvoiceRequestTest extends TestCase
 {
-    public function testUri()
+
+    public function testUri(): void
     {
         $request = new GetInvoiceRequest(new Id(1));
 
         $this->assertSame('invoices/1.json', $request->getUri());
     }
+
 }

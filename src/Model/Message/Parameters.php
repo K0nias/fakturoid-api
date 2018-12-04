@@ -2,14 +2,12 @@
 
 namespace K0nias\FakturoidApi\Model\Message;
 
-use K0nias\FakturoidApi\Exception\InvalidParameterException;
 use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
 
 final class Parameters
 {
-    /**
-     * @var ImmutableParameterBag
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag */
     private $parameters;
 
     public function __construct()
@@ -17,18 +15,13 @@ final class Parameters
         $this->parameters = new ImmutableParameterBag();
     }
 
-    protected function validateEmail(string $email)
+    protected function validateEmail(string $email): void
     {
-        if (false === filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new InvalidParameterException(sprintf('Invalid email. Given "%s"', $email));
+        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+            throw new \K0nias\FakturoidApi\Exception\InvalidParameterException(sprintf('Invalid email. Given "%s"', $email));
         }
     }
 
-    /**
-     * @param string $message
-     *
-     * @return Parameters
-     */
     public function message(string $message): self
     {
         $this->parameters = $this->parameters->set('message', $message);
@@ -36,11 +29,6 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param string $subject
-     *
-     * @return Parameters
-     */
     public function subject(string $subject): self
     {
         $this->parameters = $this->parameters->set('subject', $subject);
@@ -48,11 +36,6 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param string $email
-     *
-     * @return Parameters
-     */
     public function email(string $email): self
     {
         $this->validateEmail($email);
@@ -62,11 +45,6 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param string $email
-     *
-     * @return Parameters
-     */
     public function emailCopy(string $email): self
     {
         $this->validateEmail($email);
@@ -77,10 +55,11 @@ final class Parameters
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getParameters(): array
     {
         return $this->parameters->getAll();
     }
+
 }

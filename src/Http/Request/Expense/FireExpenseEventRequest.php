@@ -9,38 +9,26 @@ use K0nias\FakturoidApi\Model\Expense\Id;
 
 final class FireExpenseEventRequest implements RequestInterface
 {
-    const REQUEST_URI = 'expenses/%s/fire.json?event=%s';
 
-    /**
-     * @var Event
-     */
+    private const REQUEST_URI = 'expenses/%s/fire.json?event=%s';
+
+    /** @var \K0nias\FakturoidApi\Model\Expense\Event */
     private $event;
-    /**
-     * @var Id
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Expense\Id */
     private $id;
 
-    /**
-     * @param Id    $id
-     * @param Event $event
-     */
     public function __construct(Id $id, Event $event)
     {
         $this->event = $event;
         $this->id = $id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUri(): string
     {
         return sprintf(self::REQUEST_URI, $this->id->getId(), $this->event->getEvent());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::POST();
@@ -53,4 +41,5 @@ final class FireExpenseEventRequest implements RequestInterface
     {
         return $this->event->getOptionalData();
     }
+
 }

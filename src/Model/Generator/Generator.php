@@ -3,27 +3,20 @@
 namespace K0nias\FakturoidApi\Model\Generator;
 
 use K0nias\FakturoidApi\Model\Currency\CurrencyInterface;
-use K0nias\FakturoidApi\Model\Line\Line;
-use K0nias\FakturoidApi\Model\Line\LineCollection;
-use K0nias\FakturoidApi\Model\Subject\Id;
 use K0nias\FakturoidApi\Model\Payment\Method as PaymentMethod;
+use K0nias\FakturoidApi\Model\Subject\Id;
 
 final class Generator
 {
-    /**
-     * @var Parameters
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Generator\Parameters */
     private $parameters;
-    /**
-     * @var OptionalParameters|null
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Generator\OptionalParameters|null */
     private $optionalParameters;
 
     /**
-     * @param string                  $name
-     * @param Id                      $subjectId
-     * @param Line|LineCollection     $lines
-     * @param OptionalParameters|null $optionalParameters
+     * @param \K0nias\FakturoidApi\Model\Line\Line|\K0nias\FakturoidApi\Model\Line\LineCollection $lines
      */
     public function __construct(string $name, Id $subjectId, $lines, PaymentMethod $paymentMethod, CurrencyInterface $currency, ?OptionalParameters $optionalParameters = null)
     {
@@ -40,7 +33,7 @@ final class Generator
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getData(): array
     {
@@ -48,10 +41,11 @@ final class Generator
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     protected function getOptionalParameters(): array
     {
         return $this->optionalParameters ? $this->optionalParameters->getParameters() : [];
     }
+
 }

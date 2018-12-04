@@ -2,30 +2,27 @@
 
 namespace K0nias\FakturoidApi\Exception;
 
-class InvalidOptionParameterException extends FakturoidApiException
+class InvalidOptionParameterException extends \K0nias\FakturoidApi\Exception\FakturoidApiException
 {
 
-    /**
-     * @param string      $givenOption
-     * @param array       $availableOptions
-     * @param null|string $message
-     *
-     * @return InvalidOptionParameterException
-     */
+    /** @param string[] $availableOptions */
     public static function createFrom(string $givenOption, array $availableOptions, ?string $message = null): self
     {
         return new self(self::generateMessage($givenOption, $availableOptions, $message));
     }
 
-    /**
-     * @param string      $givenOption
-     * @param array       $availableOptions
-     * @param string|null $message
-     *
-     * @return string
-     */
-    public static function generateMessage(string $givenOption, array $availableOptions, ?string $message = 'Invalid option. Given: "%s". Available options: "%s".'): string
+    /** @param string[] $availableOptions */
+    public static function generateMessage(
+        string $givenOption,
+        array $availableOptions,
+        ?string $message = null
+    ): string
     {
+        if ($message === null) {
+            $message = 'Invalid option. Given: "%s". Available options: "%s".';
+        }
+
         return sprintf($message, $givenOption, implode(', ', $availableOptions));
     }
+
 }

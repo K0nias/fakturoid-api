@@ -8,32 +8,22 @@ use K0nias\FakturoidApi\Model\Invoice\Id;
 
 final class DeleteInvoiceRequest implements RequestInterface
 {
-    const REQUEST_URI = 'invoices/%s.json';
 
-    /**
-     * @var Id
-     */
+    private const REQUEST_URI = 'invoices/%s.json';
+
+    /** @var \K0nias\FakturoidApi\Model\Invoice\Id */
     private $id;
 
-    /**
-     * @param Id $id
-     */
     public function __construct(Id $id)
     {
         $this->id = $id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUri(): string
     {
         return sprintf(self::REQUEST_URI, $this->id->getId());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::DELETE();
@@ -46,4 +36,5 @@ final class DeleteInvoiceRequest implements RequestInterface
     {
         return [];
     }
+
 }

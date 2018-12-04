@@ -6,4 +6,5 @@ use K0nias\FakturoidApi\Http\Response\CommonJsonResponse;
 
 final class CreateExpenseResponse extends CommonJsonResponse
 {
+
 }

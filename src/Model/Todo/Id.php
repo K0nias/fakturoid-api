@@ -4,9 +4,8 @@ namespace K0nias\FakturoidApi\Model\Todo;
 
 final class Id
 {
-    /**
-     * @var int
-     */
+
+    /** @var int */
     private $id;
 
     public function __construct(int $id)
@@ -14,11 +13,9 @@ final class Id
         $this->id = $id;
     }
 
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->id;
     }
+
 }

@@ -2,13 +2,14 @@
 
 namespace K0nias\FakturoidApi\Model\Subject\Filter;
 
+use DateTime;
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
 
 final class Parameters implements ParametersInterface
 {
-    /**
-     * @var ImmutableParameterBag
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag */
     protected $parameters;
 
     public function __construct()
@@ -16,9 +17,6 @@ final class Parameters implements ParametersInterface
         $this->parameters = new ImmutableParameterBag();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function custom(string $custom): ParametersInterface
     {
         $this->parameters = $this->parameters->set('custom_id', $custom);
@@ -26,31 +24,20 @@ final class Parameters implements ParametersInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function since(\DateTimeImmutable $date): ParametersInterface
+    public function since(DateTimeImmutable $date): ParametersInterface
     {
-        $this->parameters = $this->parameters->set('since', $date->format(\DateTime::ATOM));
+        $this->parameters = $this->parameters->set('since', $date->format(DateTime::ATOM));
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function updatedSince(\DateTimeImmutable $date): ParametersInterface
+    public function updatedSince(DateTimeImmutable $date): ParametersInterface
     {
-        $this->parameters = $this->parameters->set('updated_since', $date->format(\DateTime::ATOM));
+        $this->parameters = $this->parameters->set('updated_since', $date->format(DateTime::ATOM));
 
         return $this;
     }
 
-    /**
-     * @throws \OutOfRangeException
-     *
-     * {@inheritdoc}
-     */
     public function page(int $page): ParametersInterface
     {
         if (1 > $page) {
@@ -69,4 +56,5 @@ final class Parameters implements ParametersInterface
     {
         return $this->parameters->getAll();
     }
+
 }

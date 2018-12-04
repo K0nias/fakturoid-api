@@ -8,7 +8,8 @@ use PHPUnit\Framework\TestCase;
 
 class OptionalParametersTest extends TestCase
 {
-    public function testParameters()
+
+    public function testParameters(): void
     {
         $parameters = new OptionalParameters();
 
@@ -28,8 +29,7 @@ class OptionalParametersTest extends TestCase
             ->email('test@test.cz')
             ->emailCopy('test2@test.cz')
             ->phone('+420112233445')
-            ->web('www.example.cz')
-        ;
+            ->web('www.example.cz');
 
         $this->assertEquals([
             'custom_id' => '11112',
@@ -48,7 +48,8 @@ class OptionalParametersTest extends TestCase
             'email' => 'test@test.cz',
             'email_copy' => 'test2@test.cz',
             'phone' => '+420112233445',
-            'web' => 'www.example.cz'
+            'web' => 'www.example.cz',
         ], $parameters->getParameters());
     }
+
 }

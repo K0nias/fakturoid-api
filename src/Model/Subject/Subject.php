@@ -4,20 +4,13 @@ namespace K0nias\FakturoidApi\Model\Subject;
 
 final class Subject
 {
-    /**
-     * @var Parameters
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Subject\Parameters */
     private $parameters;
-    /**
-     * @var OptionalParameters|null
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Subject\OptionalParameters|null */
     private $optionalParameters;
 
-
-    /**
-     * @param string                    $name
-     * @param OptionalParameters|null   $optionalParameters
-     */
     public function __construct(string $name, ?OptionalParameters $optionalParameters = null)
     {
         $parameters = new Parameters();
@@ -29,7 +22,7 @@ final class Subject
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getData(): array
     {
@@ -37,10 +30,11 @@ final class Subject
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     protected function getOptionalParameters(): array
     {
         return $this->optionalParameters ? $this->optionalParameters->getParameters() : [];
     }
+
 }

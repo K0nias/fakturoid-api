@@ -2,28 +2,29 @@
 
 namespace K0nias\FakturoidApi\Tests\Model\Generator;
 
-use K0nias\FakturoidApi\Exception\InvalidParameterException;
+use DateTime;
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Generator\OptionalParameters;
 use K0nias\FakturoidApi\Model\Generator\Periodic;
-use K0nias\FakturoidApi\Model\Payment\Method as PaymentMethod;
 use PHPUnit\Framework\TestCase;
 
 class OptionalParametersTest extends TestCase
 {
-    public function testInvalidDueParameter()
+
+    public function testInvalidDueParameter(): void
     {
         $parameters = new OptionalParameters();
 
-        $this->expectException(InvalidParameterException::class);
+        $this->expectException(\K0nias\FakturoidApi\Exception\InvalidParameterException::class);
 
         $parameters->due(0);
     }
 
-    public function testParameters()
+    public function testParameters(): void
     {
         $parameters = new OptionalParameters();
 
-        $periodic = new Periodic(new \DateTimeImmutable(), 10);
+        $periodic = new Periodic(new DateTimeImmutable(), 10);
 
         $parameters->due(5)
             ->custom('222')
@@ -33,7 +34,7 @@ class OptionalParametersTest extends TestCase
         $testingData = [
             'due' => 5,
             'recurring' => true,
-            'start_date' => (new \DateTime)->format('Y-m-d'),
+            'start_date' => (new DateTime())->format('Y-m-d'),
             'months_period' => 10,
             'proforma' => true,
             'custom_id' => '222',
@@ -41,4 +42,5 @@ class OptionalParametersTest extends TestCase
 
         $this->assertEquals($testingData, $parameters->getParameters());
     }
+
 }

@@ -8,10 +8,12 @@ use PHPUnit\Framework\TestCase;
 
 class GetInvoicePdfRequestTest extends TestCase
 {
-    public function testUri()
+
+    public function testUri(): void
     {
         $request = new GetInvoicePdfRequest(new Id(1));
 
         $this->assertSame('invoices/1/download.pdf', $request->getUri());
     }
+
 }

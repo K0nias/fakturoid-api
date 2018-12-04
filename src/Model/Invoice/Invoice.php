@@ -2,28 +2,21 @@
 
 namespace K0nias\FakturoidApi\Model\Invoice;
 
-use K0nias\FakturoidApi\Model\Line\Line;
-use K0nias\FakturoidApi\Model\Line\LineCollection;
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Payment\Method as PaymentMethod;
 use K0nias\FakturoidApi\Model\Subject\Id;
 
 final class Invoice
 {
-    /**
-     * @var Parameters
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Invoice\Parameters */
     private $parameters;
-    /**
-     * @var OptionalParameters|null
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Invoice\OptionalParameters|null */
     private $optionalParameters;
 
-
     /**
-     * @param Id                        $subjectId
-     * @param PaymentMethod             $paymentMethod
-     * @param Line|LineCollection       $lines
-     * @param OptionalParameters|null   $optionalParameters
+     * @param \K0nias\FakturoidApi\Model\Line\Line|\K0nias\FakturoidApi\Model\Line\LineCollection $lines
      */
     public function __construct(Id $subjectId, PaymentMethod $paymentMethod, $lines, ?OptionalParameters $optionalParameters = null)
     {
@@ -37,30 +30,25 @@ final class Invoice
         $this->optionalParameters = $optionalParameters;
     }
 
-    /**
-     * @return array
-     */
+    /** @return mixed[] */
     public function getData(): array
     {
         return array_merge($this->getOptionalParameters(), $this->parameters->getParameters());
     }
 
-    /**
-     * @return array
-     */
+    /** @return mixed[] */
     protected function getOptionalParameters(): array
     {
         return array_merge($this->getDefaultOptionalParametersParameters(), $this->optionalParameters ? $this->optionalParameters->getParameters() : []);
     }
 
-    /**
-     * @return array
-     */
-    protected function getDefaultOptionalParametersParameters()
+    /** @return mixed[] */
+    protected function getDefaultOptionalParametersParameters(): array
     {
         return [
             'due' => 14,
-            'issued_on' => (new \DateTimeImmutable())->format('Y-m-d'),
+            'issued_on' => (new DateTimeImmutable())->format('Y-m-d'),
         ];
     }
+
 }

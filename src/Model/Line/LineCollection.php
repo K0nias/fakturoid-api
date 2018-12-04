@@ -2,45 +2,40 @@
 
 namespace K0nias\FakturoidApi\Model\Line;
 
-use K0nias\FakturoidApi\Exception\InvalidParameterException;
-
 final class LineCollection
 {
-    /**
-     * @var Line[]
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Line\Line[] */
     private $lines = [];
 
     /**
-     * @throws InvalidParameterException if lines[] is empty
-     *
-     * @param array $lines
+     * @param \K0nias\FakturoidApi\Model\Line\Line[] $lines
      */
     public function __construct(array $lines = [])
     {
-        if (0 === count($lines)) {
-            throw new InvalidParameterException("There must be at least one line in LineCollection. Empty array given.");
+        if (count($lines) === 0) {
+            throw new \K0nias\FakturoidApi\Exception\InvalidParameterException(
+                'There must be at least one line in LineCollection. Empty array given.'
+            );
         }
 
-        array_map(function (Line $line) {
+        array_map(function (Line $line): void {
             $this->add($line);
         }, $lines);
     }
 
 
-    /**
-     * @param Line $line
-     */
-    protected function add(Line $line)
+    protected function add(Line $line): void
     {
         $this->lines[] = $line;
     }
 
     /**
-     * @return Line[]
+     * @return \K0nias\FakturoidApi\Model\Line\Line[]
      */
     public function getAll(): array
     {
         return $this->lines;
     }
+
 }

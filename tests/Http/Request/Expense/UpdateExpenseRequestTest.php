@@ -7,12 +7,14 @@ use K0nias\FakturoidApi\Model\Expense\Id;
 use K0nias\FakturoidApi\Model\Expense\Parameters;
 use PHPUnit\Framework\TestCase;
 
-class UpdateInvoiceRequestTest extends TestCase
+class UpdateExpenseRequestTest extends TestCase
 {
-    public function testUri()
+
+    public function testUri(): void
     {
         $request = new UpdateExpenseRequest(new Id(1), new Parameters());
 
         $this->assertSame('expenses/1.json', $request->getUri());
     }
+
 }

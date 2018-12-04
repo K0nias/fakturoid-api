@@ -8,10 +8,12 @@ use PHPUnit\Framework\TestCase;
 
 class DeleteGeneratorRequestTest extends TestCase
 {
-    public function testUri()
+
+    public function testUri(): void
     {
         $request = new DeleteGeneratorRequest(new Id(1));
 
         $this->assertSame('generators/1.json', $request->getUri());
     }
+
 }

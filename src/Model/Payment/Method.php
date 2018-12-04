@@ -2,17 +2,16 @@
 
 namespace K0nias\FakturoidApi\Model\Payment;
 
-use K0nias\FakturoidApi\Exception\InvalidOptionParameterException;
-
 final class Method
 {
-    const BANK_METHOD = 'bank';
-    const COD_METHOD = 'cod';
-    const CASH_METHOD = 'cash';
-    const CARD_METHOD = 'card';
-    const PAYPAL_METHOD = 'paypal';
 
-    const AVAILABLE_METHODS = [
+    public const BANK_METHOD = 'bank';
+    public const COD_METHOD = 'cod';
+    public const CASH_METHOD = 'cash';
+    public const CARD_METHOD = 'card';
+    public const PAYPAL_METHOD = 'paypal';
+
+    private const AVAILABLE_METHODS = [
         self::BANK_METHOD,
         self::COD_METHOD,
         self::CASH_METHOD,
@@ -20,15 +19,13 @@ final class Method
         self::PAYPAL_METHOD,
     ];
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $method;
 
     public function __construct(string $method)
     {
         if ( ! in_array($method, self::AVAILABLE_METHODS)) {
-            throw InvalidOptionParameterException::createFrom($method, self::AVAILABLE_METHODS);
+            throw \K0nias\FakturoidApi\Exception\InvalidOptionParameterException::createFrom($method, self::AVAILABLE_METHODS);
         }
 
         $this->method = $method;
@@ -63,4 +60,5 @@ final class Method
     {
         return new self(self::PAYPAL_METHOD);
     }
+
 }

@@ -2,13 +2,12 @@
 
 namespace K0nias\FakturoidApi\Model\Expense;
 
-use K0nias\FakturoidApi\Exception\FilterParameter\InvalidStatusException;
-
 final class Status
 {
-    const STATUS_OPEN = 'open';
-    const STATUS_OVERDUE = 'overdue';
-    const STATUS_PAID = 'paid';
+
+    public const STATUS_OPEN = 'open';
+    public const STATUS_OVERDUE = 'overdue';
+    public const STATUS_PAID = 'paid';
 
     private const AVAILABLE_STATUES = [
         self::STATUS_OPEN,
@@ -16,38 +15,27 @@ final class Status
         self::STATUS_PAID,
     ];
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $status;
 
-
-    /**
-     * @throws InvalidStatusException
-     *
-     * @param string $status
-     */
     public function __construct(string $status)
     {
         $status = strtolower($status);
 
         if ( ! in_array($status, self::AVAILABLE_STATUES)) {
-            throw InvalidStatusException::create($status, self::AVAILABLE_STATUES);
+            throw \K0nias\FakturoidApi\Exception\InvalidOptionParameterException::createFrom($status, self::AVAILABLE_STATUES);
         }
 
         $this->status = $status;
     }
 
-    /**
-     * @return string
-     */
     public function getStatus(): string
     {
         return $this->status;
     }
 
     /**
-     * @return Status
+     * @return \K0nias\FakturoidApi\Model\Expense\Status
      */
     public static function open(): self
     {
@@ -55,7 +43,7 @@ final class Status
     }
 
     /**
-     * @return Status
+     * @return \K0nias\FakturoidApi\Model\Expense\Status
      */
     public static function overdue(): self
     {
@@ -63,7 +51,7 @@ final class Status
     }
 
     /**
-     * @return Status
+     * @return \K0nias\FakturoidApi\Model\Expense\Status
      */
     public static function paid(): self
     {

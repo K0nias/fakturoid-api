@@ -9,10 +9,12 @@ use PHPUnit\Framework\TestCase;
 
 class UpdateGeneratorRequestTest extends TestCase
 {
-    public function testUri()
+
+    public function testUri(): void
     {
         $request = new UpdateGeneratorRequest(new Id(1), new Parameters());
 
         $this->assertSame('generators/1.json', $request->getUri());
     }
+
 }

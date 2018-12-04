@@ -2,16 +2,10 @@
 
 namespace K0nias\FakturoidApi\Model\Generator;
 
-use K0nias\FakturoidApi\Exception\InvalidParameterException;
-use K0nias\FakturoidApi\Model\Payment\Method as PaymentMethod;
-use K0nias\FakturoidApi\Model\Subject\Id as SubjectId;
-
 final class OptionalParameters
 {
 
-    /**
-     * @var Parameters
-     */
+    /** @var \K0nias\FakturoidApi\Model\Generator\Parameters */
     private $parameters;
 
     public function __construct()
@@ -19,11 +13,6 @@ final class OptionalParameters
         $this->parameters = new Parameters();
     }
 
-    /**
-     * @param Periodic|null $periodic
-     *
-     * @return self
-     */
     public function periodical(?Periodic $periodic = null): self
     {
         $this->parameters->periodical($periodic);
@@ -31,11 +20,6 @@ final class OptionalParameters
         return $this;
     }
 
-    /**
-     * @param bool $proforma
-     *
-     * @return self
-     */
     public function proforma(bool $proforma): self
     {
         $this->parameters->proforma($proforma);
@@ -43,11 +27,6 @@ final class OptionalParameters
         return $this;
     }
 
-    /**
-     * @param string $id
-     *
-     * @return self
-     */
     public function custom(string $id): self
     {
         $this->parameters->custom($id);
@@ -55,13 +34,6 @@ final class OptionalParameters
         return $this;
     }
 
-    /**
-     * @param int $due
-     *
-     * @throws InvalidParameterException
-     *
-     * @return self
-     */
     public function due(int $due): self
     {
         $this->parameters->due($due);
@@ -70,10 +42,11 @@ final class OptionalParameters
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getParameters(): array
     {
         return $this->parameters->getParameters();
     }
+
 }

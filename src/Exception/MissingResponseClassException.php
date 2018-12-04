@@ -2,5 +2,7 @@
 
 namespace K0nias\FakturoidApi\Exception;
 
-class MissingResponseClassException extends FakturoidApiException
-{}
+class MissingResponseClassException extends \K0nias\FakturoidApi\Exception\FakturoidApiException
+{
+
+}

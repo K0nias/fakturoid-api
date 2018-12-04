@@ -8,32 +8,22 @@ use K0nias\FakturoidApi\Model\Filter\Year;
 
 final class GetPaidReportsRequest implements RequestInterface
 {
-    const REQUEST_URI = 'reports/%s/paid.json';
 
-    /**
-     * @var Year
-     */
+    private const REQUEST_URI = 'reports/%s/paid.json';
+
+    /** @var \K0nias\FakturoidApi\Model\Filter\Year */
     private $year;
 
-    /**
-     * @param Year $year
-     */
     public function __construct(Year $year)
     {
         $this->year = $year;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUri(): string
     {
         return sprintf(self::REQUEST_URI, $this->year->getYear());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getMethod(): Method
     {
         return Method::GET();
@@ -46,4 +36,5 @@ final class GetPaidReportsRequest implements RequestInterface
     {
         return [];
     }
+
 }

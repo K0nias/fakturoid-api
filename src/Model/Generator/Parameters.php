@@ -2,7 +2,6 @@
 
 namespace K0nias\FakturoidApi\Model\Generator;
 
-use K0nias\FakturoidApi\Exception\InvalidParameterException;
 use K0nias\FakturoidApi\Model\Currency\CurrencyInterface;
 use K0nias\FakturoidApi\Model\Line\Line;
 use K0nias\FakturoidApi\Model\Line\LineCollection;
@@ -12,13 +11,11 @@ use K0nias\FakturoidApi\Model\Subject\Id as SubjectId;
 
 final class Parameters
 {
-    /**
-     * @var ImmutableParameterBag
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag */
     private $parameters;
-    /**
-     * @var Periodic|null
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Generator\Periodic|null */
     private $periodic;
 
     public function __construct()
@@ -26,11 +23,6 @@ final class Parameters
         $this->parameters = new ImmutableParameterBag();
     }
 
-    /**
-     * @param CurrencyInterface $currency
-     *
-     * @return Parameters
-     */
     public function currency(CurrencyInterface $currency): self
     {
         $this->parameters = $this->parameters->set('currency', $currency->getCode());
@@ -38,11 +30,6 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param Periodic|null $periodic
-     *
-     * @return Parameters
-     */
     public function periodical(?Periodic $periodic = null): self
     {
         $this->periodic = $periodic;
@@ -50,11 +37,6 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return Parameters
-     */
     public function name(string $name): self
     {
         $this->parameters = $this->parameters->set('name', $name);
@@ -62,11 +44,6 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param bool $proforma
-     *
-     * @return Parameters
-     */
     public function proforma(bool $proforma): self
     {
         $this->parameters = $this->parameters->set('proforma', $proforma);
@@ -74,11 +51,6 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param SubjectId $subjectId
-     *
-     * @return Parameters
-     */
     public function subject(SubjectId $subjectId): self
     {
         $this->parameters = $this->parameters->set('subject_id', $subjectId->getId());
@@ -86,11 +58,6 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param string $id
-     *
-     * @return Parameters
-     */
     public function custom(string $id): self
     {
         $this->parameters = $this->parameters->set('custom_id', $id);
@@ -98,11 +65,6 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param PaymentMethod $paymentMethod
-     *
-     * @return self
-     */
     public function paymentMethod(PaymentMethod $paymentMethod): self
     {
         $this->parameters = $this->parameters->set('payment_method', $paymentMethod->getMethod());
@@ -112,14 +74,16 @@ final class Parameters
 
 
     /**
-     * @param Line|LineCollection $lines
-     *
-     * @return self
+     * @param \K0nias\FakturoidApi\Model\Line\Line|\K0nias\FakturoidApi\Model\Line\LineCollection $lines
      */
     public function lines($lines): self
     {
         if ( ! $lines instanceof Line && ! $lines instanceof LineCollection) {
-            throw new InvalidParameterException(sprintf('Lines parameter must be instance of %s or %s.', Line::class, LineCollection::class));
+            throw new \K0nias\FakturoidApi\Exception\InvalidParameterException(sprintf(
+                'Lines parameter must be instance of %s or %s.',
+                Line::class,
+                LineCollection::class
+            ));
         }
 
         if ($lines instanceof Line) {
@@ -131,17 +95,13 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param int $due
-     *
-     * @throws InvalidParameterException
-     *
-     * @return self
-     */
     public function due(int $due): self
     {
         if ($due < 1) {
-            throw new InvalidParameterException(sprintf('Due must be positive integer greater than 0. Given: %s', $due));
+            throw new \K0nias\FakturoidApi\Exception\InvalidParameterException(sprintf(
+                'Due must be positive integer greater than 0. Given: %s',
+                $due
+            ));
         }
 
         $this->parameters = $this->parameters->set('due', $due);
@@ -150,19 +110,17 @@ final class Parameters
     }
 
     /**
-     * @param LineCollection $lineCollection
-     *
-     * @return array
+     * @return mixed[]
      */
     protected function transformLinesData(LineCollection $lineCollection): array
     {
-        return array_map(function (Line $line) {
+        return array_map(static function (Line $line) {
             return $line->getData();
         }, $lineCollection->getAll());
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getParameters(): array
     {
@@ -177,4 +135,5 @@ final class Parameters
 
         return $parameters;
     }
+
 }

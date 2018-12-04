@@ -9,10 +9,12 @@ use PHPUnit\Framework\TestCase;
 
 class UpdateSubjectRequestTest extends TestCase
 {
-    public function testUri()
+
+    public function testUri(): void
     {
         $request = new UpdateSubjectRequest(new Id(1), new Parameters());
 
         $this->assertSame('subjects/1.json', $request->getUri());
     }
+
 }

@@ -3,12 +3,12 @@
 namespace K0nias\FakturoidApi\Tests\Model\Filter;
 
 use K0nias\FakturoidApi\Model\Filter\SearchParameters;
-use K0nias\FakturoidApi\Model\Subject\Id;
 use PHPUnit\Framework\TestCase;
 
 class SearchParametersTest extends TestCase
 {
-    public function testInvalidPageParameter()
+
+    public function testInvalidPageParameter(): void
     {
         $parametersFilter = new SearchParameters();
 
@@ -17,7 +17,7 @@ class SearchParametersTest extends TestCase
         $parametersFilter->page(-1);
     }
 
-    public function testParametersValues()
+    public function testParametersValues(): void
     {
         $query = 'query';
         $page = 2;
@@ -34,4 +34,5 @@ class SearchParametersTest extends TestCase
         $this->assertSame($page, $processedParameters['page']);
         $this->assertSame($query, $processedParameters['query']);
     }
+
 }

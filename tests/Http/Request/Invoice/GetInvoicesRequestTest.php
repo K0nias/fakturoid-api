@@ -9,7 +9,8 @@ use PHPUnit\Framework\TestCase;
 
 class GetInvoicesRequestTest extends TestCase
 {
-    public function testParameters()
+
+    public function testParameters(): void
     {
         $status = new Status('paid');
         $parameters = (new Parameters())
@@ -23,4 +24,5 @@ class GetInvoicesRequestTest extends TestCase
         $this->assertArrayHasKey('status', $data);
         $this->assertSame($status->getStatus(), $data['status']);
     }
+
 }

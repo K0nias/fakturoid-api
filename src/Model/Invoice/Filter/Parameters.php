@@ -2,6 +2,7 @@
 
 namespace K0nias\FakturoidApi\Model\Invoice\Filter;
 
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Filter\CommonDocumentParameters;
 use K0nias\FakturoidApi\Model\Invoice\Status;
 use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
@@ -9,15 +10,11 @@ use K0nias\FakturoidApi\Model\Subject\Id;
 
 final class Parameters implements ParametersInterface
 {
-    /**
-     * @var ImmutableParameterBag
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag */
     protected $parameters;
 
-
-    /**
-     * @var CommonDocumentParameters
-     */
+    /** @var \K0nias\FakturoidApi\Model\Filter\CommonDocumentParameters */
     private $commonParameters;
 
     public function __construct()
@@ -27,9 +24,6 @@ final class Parameters implements ParametersInterface
         $this->commonParameters = new CommonDocumentParameters();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function custom(string $custom): ParametersInterface
     {
         $this->parameters = $this->parameters->set('custom_id', $custom);
@@ -37,10 +31,7 @@ final class Parameters implements ParametersInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function updatedSince(\DateTimeImmutable $date): ParametersInterface
+    public function updatedSince(DateTimeImmutable $date): ParametersInterface
     {
         $this->commonParameters->updatedSince($date);
 
@@ -48,9 +39,6 @@ final class Parameters implements ParametersInterface
     }
 
 
-    /**
-     * {@inheritdoc}
-     */
     public function subject(Id $subjectId): ParametersInterface
     {
         $this->commonParameters->subject($subjectId);
@@ -58,19 +46,13 @@ final class Parameters implements ParametersInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function since(\DateTimeImmutable $date): ParametersInterface
+    public function since(DateTimeImmutable $date): ParametersInterface
     {
         $this->commonParameters->since($date);
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function page(int $page): ParametersInterface
     {
         $this->commonParameters->page($page);
@@ -79,9 +61,6 @@ final class Parameters implements ParametersInterface
     }
 
 
-    /**
-     * {@inheritdoc}
-     */
     public function status(Status $status): ParametersInterface
     {
         $this->parameters = $this->parameters->set('status', $status->getStatus());
@@ -89,9 +68,6 @@ final class Parameters implements ParametersInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function number(string $number): ParametersInterface
     {
         $this->commonParameters->number($number);
@@ -107,4 +83,5 @@ final class Parameters implements ParametersInterface
     {
         return array_merge($this->commonParameters->getParameters(), $this->parameters->getAll());
     }
+
 }

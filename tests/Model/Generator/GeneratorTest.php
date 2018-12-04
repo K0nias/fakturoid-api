@@ -4,23 +4,24 @@ namespace K0nias\FakturoidApi\Tests\Model\Generator;
 
 use K0nias\FakturoidApi\Model\Currency\Currency;
 use K0nias\FakturoidApi\Model\Generator\Generator;
-use K0nias\FakturoidApi\Model\Line\Line;
 use K0nias\FakturoidApi\Model\Generator\OptionalParameters;
+use K0nias\FakturoidApi\Model\Line\Line;
 use K0nias\FakturoidApi\Model\Payment\Method as PaymentMethod;
 use K0nias\FakturoidApi\Model\Subject\Id as SubjectId;
 use PHPUnit\Framework\TestCase;
 
-class InvoiceTest extends TestCase
+class GeneratorTest extends TestCase
 {
 
-    public function createGenerator(?OptionalParameters $optionalParameters = null)
+    public function createGenerator(?OptionalParameters $optionalParameters = null): Generator
     {
         $line = new Line('Work hour', 100, 1.0);
 
         return new Generator('testing name', new SubjectId(10), $line, PaymentMethod::bank(), Currency::aud(), $optionalParameters);
     }
 
-    public function getGeneratorMinimalData()
+    /** @return mixed[] */
+    public function getGeneratorMinimalData(): array
     {
         return [
             'name' => 'testing name',
@@ -28,20 +29,23 @@ class InvoiceTest extends TestCase
             'currency' => Currency::AUD_CURRENCY,
             'subject_id' => 10,
             'recurring' => false,
-            'lines' => [[
-                'name' => 'Work hour',
-                'unit_price' => 100,
-                'quantity' => 1.0,
-            ]],
+            'lines' => [
+                [
+                    'name' => 'Work hour',
+                    'unit_price' => 100,
+                    'quantity' => 1.0,
+                ],
+            ],
         ];
     }
 
-    public function getInvoiceOptionalData()
+    /** @return mixed[] */
+    public function getInvoiceOptionalData(): array
     {
         return array_merge($this->getGeneratorMinimalData(), ['due' => 10]);
     }
 
-    public function testGeneratorMinimalData()
+    public function testGeneratorMinimalData(): void
     {
         $generator = $this->createGenerator();
 
@@ -51,7 +55,7 @@ class InvoiceTest extends TestCase
         $this->assertEquals($testedData, $originalData);
     }
 
-    public function testGeneratorOptionalData()
+    public function testGeneratorOptionalData(): void
     {
         $optionalData = new OptionalParameters();
         $optionalData->due(10);
@@ -63,4 +67,5 @@ class InvoiceTest extends TestCase
 
         $this->assertEquals($testedData, $originalData);
     }
+
 }

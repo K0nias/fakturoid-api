@@ -2,7 +2,7 @@
 
 namespace K0nias\FakturoidApi\Model\Invoice;
 
-use K0nias\FakturoidApi\Exception\InvalidParameterException;
+use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Line\Line;
 use K0nias\FakturoidApi\Model\Line\LineCollection;
 use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
@@ -11,9 +11,8 @@ use K0nias\FakturoidApi\Model\Subject\Id as SubjectId;
 
 final class Parameters
 {
-    /**
-     * @var ImmutableParameterBag
-     */
+
+    /** @var \K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag */
     private $parameters;
 
     public function __construct()
@@ -22,9 +21,7 @@ final class Parameters
     }
 
     /**
-     * @param SubjectId $subjectId
-     *
-     * @return Parameters
+     * @return \K0nias\FakturoidApi\Model\Invoice\Parameters
      */
     public function subject(SubjectId $subjectId): self
     {
@@ -33,11 +30,6 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param string $number
-     *
-     * @return self
-     */
     public function number(string $number): self
     {
         $this->parameters = $this->parameters->set('number', $number);
@@ -45,11 +37,6 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param string $custom
-     *
-     * @return self
-     */
     public function custom(string $custom): self
     {
         $this->parameters = $this->parameters->set('custom_id', $custom);
@@ -57,11 +44,6 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param PaymentMethod $paymentMethod
-     *
-     * @return self
-     */
     public function paymentMethod(PaymentMethod $paymentMethod): self
     {
         $this->parameters = $this->parameters->set('payment_method', $paymentMethod->getMethod());
@@ -71,14 +53,16 @@ final class Parameters
 
 
     /**
-     * @param Line|LineCollection $lines
-     *
-     * @return self
+     * @param \K0nias\FakturoidApi\Model\Line\Line|\K0nias\FakturoidApi\Model\Line\LineCollection $lines
      */
     public function lines($lines): self
     {
         if ( ! $lines instanceof Line && ! $lines instanceof LineCollection) {
-            throw new InvalidParameterException(sprintf('Lines parameter must be instance of %s or %s.', Line::class, LineCollection::class));
+            throw new \K0nias\FakturoidApi\Exception\InvalidParameterException(sprintf(
+                'Lines parameter must be instance of %s or %s.',
+                Line::class,
+                LineCollection::class
+            ));
         }
 
         if ($lines instanceof Line) {
@@ -90,17 +74,10 @@ final class Parameters
         return $this;
     }
 
-    /**
-     * @param int $due
-     *
-     * @throws InvalidParameterException
-     *
-     * @return self
-     */
     public function due(int $due): self
     {
         if ($due < 1) {
-            throw new InvalidParameterException(sprintf('Due must be positive integer greater than 0. Given: %s', $due));
+            throw new \K0nias\FakturoidApi\Exception\InvalidParameterException(sprintf('Due must be positive integer greater than 0. Given: %s', $due));
         }
 
         $this->parameters = $this->parameters->set('due', $due);
@@ -109,12 +86,7 @@ final class Parameters
     }
 
 
-    /**
-     * @param \DateTimeImmutable $issuedDate
-     *
-     * @return self
-     */
-    public function issuedDate(\DateTimeImmutable $issuedDate): self
+    public function issuedDate(DateTimeImmutable $issuedDate): self
     {
         $this->parameters = $this->parameters->set('issued_on', $issuedDate->format('Y-m-d'));
 
@@ -143,9 +115,7 @@ final class Parameters
     }
 
     /**
-     * @param LineCollection $lineCollection
-     *
-     * @return array
+     * @return mixed[][]
      */
     protected function transformLinesData(LineCollection $lineCollection): array
     {
@@ -155,10 +125,11 @@ final class Parameters
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getParameters(): array
     {
         return $this->parameters->getAll();
     }
+
 }

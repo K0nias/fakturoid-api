@@ -7,7 +7,8 @@ use PHPUnit\Framework\TestCase;
 
 class OptionalParametersTest extends TestCase
 {
-    public function testParameters()
+
+    public function testParameters(): void
     {
         $parameters = new OptionalParameters();
 
@@ -25,4 +26,5 @@ class OptionalParametersTest extends TestCase
 
         $this->assertEquals($testingData, $parameters->getParameters());
     }
+
 }
