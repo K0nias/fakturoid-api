@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Generator;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Generator\CreateGeneratorResponse;
 use K0nias\FakturoidApi\Model\Generator\Generator;
 
 final class CreateGeneratorRequest implements RequestInterface
@@ -35,6 +37,14 @@ final class CreateGeneratorRequest implements RequestInterface
     public function getData(): array
     {
         return $this->generator->getData();
+    }
+
+    public function send(Api $api): CreateGeneratorResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Generator\CreateGeneratorResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

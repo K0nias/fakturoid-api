@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Invoice;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Invoice\FireInvoiceEventResponse;
 use K0nias\FakturoidApi\Model\Invoice\Event;
 use K0nias\FakturoidApi\Model\Invoice\Id;
 
@@ -40,6 +42,14 @@ final class FireInvoiceEventRequest implements RequestInterface
     public function getData(): array
     {
         return $this->event->getOptionalData();
+    }
+
+    public function send(Api $api): FireInvoiceEventResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Invoice\FireInvoiceEventResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Reports;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Reports\GetReportsResponse;
 use K0nias\FakturoidApi\Model\Filter\Year;
 
 final class GetReportsRequest implements RequestInterface
@@ -35,6 +37,14 @@ final class GetReportsRequest implements RequestInterface
     public function getData(): array
     {
         return [];
+    }
+
+    public function send(Api $api): GetReportsResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Reports\GetReportsResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

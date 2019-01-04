@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Todo;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Todo\GetTodosResponse;
 use K0nias\FakturoidApi\Model\Todo\Filter\ParametersInterface;
 
 final class GetTodosRequest implements RequestInterface
@@ -35,6 +37,14 @@ final class GetTodosRequest implements RequestInterface
     public function getData(): array
     {
         return $this->parameters ? $this->parameters->getParameters() : [];
+    }
+
+    public function send(Api $api): GetTodosResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Todo\GetTodosResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

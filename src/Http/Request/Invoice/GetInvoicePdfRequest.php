@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Invoice;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Invoice\GetInvoicePdfResponse;
 use K0nias\FakturoidApi\Model\Invoice\Id;
 
 final class GetInvoicePdfRequest implements RequestInterface
@@ -35,6 +37,14 @@ final class GetInvoicePdfRequest implements RequestInterface
     public function getData(): array
     {
         return [];
+    }
+
+    public function send(Api $api): GetInvoicePdfResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Invoice\GetInvoicePdfResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

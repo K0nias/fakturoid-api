@@ -2,7 +2,9 @@
 
 namespace K0nias\FakturoidApi\Http\Request;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
+use K0nias\FakturoidApi\Http\Response\GetAccountResponse;
 
 final class GetAccountRequest implements RequestInterface
 {
@@ -25,6 +27,14 @@ final class GetAccountRequest implements RequestInterface
     public function getData(): array
     {
         return [];
+    }
+
+    public function send(Api $api): GetAccountResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\GetAccountResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Subject;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Subject\DeleteSubjectResponse;
 use K0nias\FakturoidApi\Model\Subject\Id;
 
 final class DeleteSubjectRequest implements RequestInterface
@@ -35,6 +37,14 @@ final class DeleteSubjectRequest implements RequestInterface
     public function getData(): array
     {
         return [];
+    }
+
+    public function send(Api $api): DeleteSubjectResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Subject\DeleteSubjectResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Event;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Event\GetPaidEventsResponse;
 use K0nias\FakturoidApi\Model\Event\Filter\ParametersInterface;
 
 final class GetPaidEventsRequest implements RequestInterface
@@ -35,6 +37,14 @@ final class GetPaidEventsRequest implements RequestInterface
     public function getData(): array
     {
         return $this->parameters ? $this->parameters->getParameters() : [];
+    }
+
+    public function send(Api $api): GetPaidEventsResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Event\GetPaidEventsResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

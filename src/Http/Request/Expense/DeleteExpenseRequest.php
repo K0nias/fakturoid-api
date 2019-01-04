@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Expense;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Expense\DeleteExpenseResponse;
 use K0nias\FakturoidApi\Model\Expense\Id;
 
 final class DeleteExpenseRequest implements RequestInterface
@@ -35,6 +37,14 @@ final class DeleteExpenseRequest implements RequestInterface
     public function getData(): array
     {
         return [];
+    }
+
+    public function send(Api $api): DeleteExpenseResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Expense\DeleteExpenseResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

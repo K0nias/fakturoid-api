@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Tests\Http\Request\Mock;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\ResponseInterface;
 
 class MissingResponseRequestMock implements RequestInterface
 {
@@ -22,6 +24,11 @@ class MissingResponseRequestMock implements RequestInterface
     public function getData(): array
     {
         return [];
+    }
+
+    public function send(Api $api): ResponseInterface
+    {
+        // not used - ignored
     }
 
 }

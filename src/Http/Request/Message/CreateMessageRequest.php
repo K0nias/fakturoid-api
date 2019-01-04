@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Message;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Message\CreateMessageResponse;
 use K0nias\FakturoidApi\Model\Message\Message;
 
 final class CreateMessageRequest implements RequestInterface
@@ -35,6 +37,14 @@ final class CreateMessageRequest implements RequestInterface
     public function getData(): array
     {
         return $this->message->getData();
+    }
+
+    public function send(Api $api): CreateMessageResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Message\CreateMessageResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

@@ -2,9 +2,11 @@
 
 namespace K0nias\FakturoidApi\Http\Request\User;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\NotSlugAwareRequestInterface;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\User\GetActualUserResponse;
 
 final class GetActualUserRequest implements RequestInterface, NotSlugAwareRequestInterface
 {
@@ -27,6 +29,14 @@ final class GetActualUserRequest implements RequestInterface, NotSlugAwareReques
     public function getData(): array
     {
         return [];
+    }
+
+    public function send(Api $api): GetActualUserResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\User\GetActualUserResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

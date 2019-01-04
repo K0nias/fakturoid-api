@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Generator;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Generator\GetRecurringGeneratorsResponse;
 use K0nias\FakturoidApi\Model\Generator\Filter\ParametersInterface;
 
 final class GetRecurringGeneratorsRequest implements RequestInterface
@@ -35,6 +37,14 @@ final class GetRecurringGeneratorsRequest implements RequestInterface
     public function getData(): array
     {
         return $this->parameters ? $this->parameters->getParameters() : [];
+    }
+
+    public function send(Api $api): GetRecurringGeneratorsResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Generator\GetRecurringGeneratorsResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }
