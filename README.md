@@ -43,7 +43,7 @@ Usage
                     ->page(2);
     
     // generic version of getting response for request
-    // @var \K0nias\FakturoidApi\Http\Response\ResponseInterfac
+    // @var \K0nias\FakturoidApi\Http\Response\ResponseInterface $response
     $response = $api->process(new GetInvoicesRequest($filterParameters));
     
     // more specific version of getting response for request 
