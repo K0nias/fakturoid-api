@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Expense;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Expense\GetExpensesResponse;
 use K0nias\FakturoidApi\Model\Expense\Filter\ParametersInterface;
 
 final class GetExpensesRequest implements RequestInterface
@@ -38,6 +40,14 @@ final class GetExpensesRequest implements RequestInterface
     public function getData(): array
     {
         return $this->parameters ? $this->parameters->getParameters() : [];
+    }
+
+    public function send(Api $api): GetExpensesResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Expense\GetExpensesResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

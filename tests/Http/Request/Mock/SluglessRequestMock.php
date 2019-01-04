@@ -2,9 +2,11 @@
 
 namespace K0nias\FakturoidApi\Tests\Http\Request\Mock;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\NotSlugAwareRequestInterface;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\ResponseInterface;
 
 class SluglessRequestMock implements RequestInterface, NotSlugAwareRequestInterface
 {
@@ -23,6 +25,11 @@ class SluglessRequestMock implements RequestInterface, NotSlugAwareRequestInterf
     public function getData(): array
     {
         return [];
+    }
+
+    public function send(Api $api): ResponseInterface
+    {
+        // not used - ignored
     }
 
 }

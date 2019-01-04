@@ -42,8 +42,13 @@ Usage
     $filterParameters->status(Status::open())
                     ->page(2);
     
-    // @var \K0nias\FakturoidApi\Http\Response\GetInvoicesResponse
+    // generic version of getting response for request
+    // @var \K0nias\FakturoidApi\Http\Response\ResponseInterfac
     $response = $api->process(new GetInvoicesRequest($filterParameters));
+    
+    // more specific version of getting response for request 
+    // @var \K0nias\FakturoidApi\Http\Response\GetInvoicesResponse $response
+    $response = (new GetInvoicesRequest($filterParameters))->send($api);
 ```
     
     

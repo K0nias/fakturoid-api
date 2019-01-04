@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\User;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\User\GetUsersResponse;
 
 final class GetUsersRequest implements RequestInterface
 {
@@ -26,6 +28,14 @@ final class GetUsersRequest implements RequestInterface
     public function getData(): array
     {
         return [];
+    }
+
+    public function send(Api $api): GetUsersResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\User\GetUsersResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

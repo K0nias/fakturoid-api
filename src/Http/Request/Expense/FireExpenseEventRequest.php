@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Expense;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Expense\FireExpenseEventResponse;
 use K0nias\FakturoidApi\Model\Expense\Event;
 use K0nias\FakturoidApi\Model\Expense\Id;
 
@@ -40,6 +42,14 @@ final class FireExpenseEventRequest implements RequestInterface
     public function getData(): array
     {
         return $this->event->getOptionalData();
+    }
+
+    public function send(Api $api): FireExpenseEventResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Expense\FireExpenseEventResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

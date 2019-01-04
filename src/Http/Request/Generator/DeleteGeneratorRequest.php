@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Generator;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Generator\DeleteGeneratorResponse;
 use K0nias\FakturoidApi\Model\Generator\Id;
 
 final class DeleteGeneratorRequest implements RequestInterface
@@ -35,6 +37,14 @@ final class DeleteGeneratorRequest implements RequestInterface
     public function getData(): array
     {
         return [];
+    }
+
+    public function send(Api $api): DeleteGeneratorResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Generator\DeleteGeneratorResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

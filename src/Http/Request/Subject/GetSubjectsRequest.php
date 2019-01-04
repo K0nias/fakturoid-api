@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Subject;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Subject\GetSubjectsResponse;
 use K0nias\FakturoidApi\Model\Subject\Filter\ParametersInterface;
 
 final class GetSubjectsRequest implements RequestInterface
@@ -38,6 +40,14 @@ final class GetSubjectsRequest implements RequestInterface
     public function getData(): array
     {
         return $this->parameters ? $this->parameters->getParameters() : [];
+    }
+
+    public function send(Api $api): GetSubjectsResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Subject\GetSubjectsResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }

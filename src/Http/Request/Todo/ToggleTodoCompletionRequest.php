@@ -2,8 +2,10 @@
 
 namespace K0nias\FakturoidApi\Http\Request\Todo;
 
+use K0nias\FakturoidApi\Api;
 use K0nias\FakturoidApi\Http\Method;
 use K0nias\FakturoidApi\Http\Request\RequestInterface;
+use K0nias\FakturoidApi\Http\Response\Todo\ToggleTodoCompletionResponse;
 use K0nias\FakturoidApi\Model\Todo\Id;
 
 final class ToggleTodoCompletionRequest implements RequestInterface
@@ -35,6 +37,14 @@ final class ToggleTodoCompletionRequest implements RequestInterface
     public function getData(): array
     {
         return [];
+    }
+
+    public function send(Api $api): ToggleTodoCompletionResponse
+    {
+        /** @var \K0nias\FakturoidApi\Http\Response\Todo\ToggleTodoCompletionResponse $response */
+        $response = $api->process($this);
+
+        return $response;
     }
 
 }
