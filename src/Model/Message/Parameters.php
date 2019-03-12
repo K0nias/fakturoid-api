@@ -15,7 +15,7 @@ final class Parameters
         $this->parameters = new ImmutableParameterBag();
     }
 
-    protected function validateEmail(string $email): void
+    private function validateEmail(string $email): void
     {
         if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
             throw new \K0nias\FakturoidApi\Exception\InvalidParameterException(sprintf('Invalid email. Given "%s"', $email));

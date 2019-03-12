@@ -23,7 +23,7 @@ final class Periodic
         $this->monthsPeriod($monthsPeriod);
     }
 
-    protected function startDate(DateTimeImmutable $startDate): self
+    private function startDate(DateTimeImmutable $startDate): self
     {
         $now = new DateTime();
         $now->setTime(0, 0, 0);
@@ -52,7 +52,7 @@ final class Periodic
         return $this;
     }
 
-    protected function monthsPeriod(int $monthsPeriod): self
+    private function monthsPeriod(int $monthsPeriod): self
     {
         if ($monthsPeriod < 1) {
             throw new \K0nias\FakturoidApi\Exception\InvalidParameterException(sprintf('Months period must be positive integer greater than 0. Given: %s', $monthsPeriod));

@@ -12,12 +12,12 @@ final class ResponseResolver implements ResponseResolverInterface
         return $this->createResponseClass($request, $content);
     }
 
-    protected function getResponseClass(RequestInterface $request): string
+    private function getResponseClass(RequestInterface $request): string
     {
         return str_replace('Request', 'Response', get_class($request));
     }
 
-    protected function createResponseClass(RequestInterface $request, string $content): ResponseInterface
+    private function createResponseClass(RequestInterface $request, string $content): ResponseInterface
     {
         $responseClass = $this->getResponseClass($request);
 

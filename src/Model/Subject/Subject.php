@@ -32,7 +32,7 @@ final class Subject
     /**
      * @return mixed[]
      */
-    protected function getOptionalParameters(): array
+    private function getOptionalParameters(): array
     {
         return $this->optionalParameters ? $this->optionalParameters->getParameters() : [];
     }

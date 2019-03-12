@@ -37,13 +37,13 @@ final class Invoice
     }
 
     /** @return mixed[] */
-    protected function getOptionalParameters(): array
+    private function getOptionalParameters(): array
     {
         return array_merge($this->getDefaultOptionalParametersParameters(), $this->optionalParameters ? $this->optionalParameters->getParameters() : []);
     }
 
     /** @return mixed[] */
-    protected function getDefaultOptionalParametersParameters(): array
+    private function getDefaultOptionalParametersParameters(): array
     {
         return [
             'due' => 14,

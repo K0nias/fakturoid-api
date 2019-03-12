@@ -88,7 +88,7 @@ final class Parameters
     /**
      * @return mixed[][]
      */
-    protected function transformLinesData(LineCollection $lineCollection): array
+    private function transformLinesData(LineCollection $lineCollection): array
     {
         return array_map(static function (Line $line) {
             return $line->getData();

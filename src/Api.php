@@ -50,11 +50,16 @@ final class Api implements RequestUrlResolverInterface
         $this->client = $client ?: new CurlClient($this, $email, $apiKey, $this->getUserAgent());
     }
 
-    protected function processResponseStatusCode(Response $response): void
+    private function processResponseStatusCode(Response $response): void
     {
         if ($response->getStatusCode() === 401) {
             throw new \K0nias\FakturoidApi\Exception\InvalidAuthorizationException('Invalid authorization');
         }
+    }
+
+    private function getUserAgent(): string
+    {
+        return $this->userAgent ?: sprintf('PHPlib <%s>', $this->email);
     }
 
     public function process(RequestInterface $request): ResponseInterface
@@ -85,12 +90,6 @@ final class Api implements RequestUrlResolverInterface
         }
 
         return $url;
-    }
-
-
-    protected function getUserAgent(): string
-    {
-        return $this->userAgent ?: sprintf('PHPlib <%s>', $this->email);
     }
 
 }
