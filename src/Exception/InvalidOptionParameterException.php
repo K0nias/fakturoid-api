@@ -12,7 +12,7 @@ class InvalidOptionParameterException extends \K0nias\FakturoidApi\Exception\Fak
     }
 
     /** @param string[] $availableOptions */
-    public static function generateMessage(
+    protected static function generateMessage(
         string $givenOption,
         array $availableOptions,
         ?string $message = null
