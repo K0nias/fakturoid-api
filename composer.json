@@ -35,13 +35,15 @@
     "squizlabs/php_codesniffer": "^3.3",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
     "slevomat/coding-standard": "~5.0",
-    "consistence/coding-standard": "^3.8"
+    "consistence/coding-standard": "^3.8",
+    "infection/infection": "^0.12.2"
   },
 
   "scripts": {
-    "test": "composer phpunit && composer phpstan && composer phpcs",
+    "test": "composer phpunit && composer phpstan && composer phpcs && composer infection",
     "phpunit": "vendor/bin/phpunit --verbose",
     "phpstan": "vendor/bin/phpstan.phar analyse -c phpstan.neon --level=max src tests",
-    "phpcs": "vendor/bin/phpcs"
+    "phpcs": "vendor/bin/phpcs",
+    "infection": "vendor/bin/infection"
   }
 }
