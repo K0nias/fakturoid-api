@@ -36,4 +36,17 @@ class CommonDocumentParametersTest extends TestCase
         ], $parametersFilter->getParameters());
     }
 
+    public function testInvalidPageValue(): void
+    {
+        $this->expectException(\OutOfRangeException::class);
+        $this->expectExceptionMessage('Page must be positive integer. Given "0"');
+
+        (new CommonDocumentParameters())->page(0);
+    }
+
+    public function testMinPageValue(): void
+    {
+        $this->assertNotNull((new CommonDocumentParameters())->page(1));
+    }
+
 }

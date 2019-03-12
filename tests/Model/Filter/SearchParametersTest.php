@@ -14,7 +14,12 @@ class SearchParametersTest extends TestCase
 
         $this->expectException(\OutOfRangeException::class);
 
-        $parametersFilter->page(-1);
+        $parametersFilter->page(0);
+    }
+
+    public function testMinPageValue(): void
+    {
+        $this->assertNotNull((new SearchParameters())->page(1));
     }
 
     public function testParametersValues(): void
