@@ -18,7 +18,12 @@
 
   "autoload": {
     "psr-4": {
-      "K0nias\\FakturoidApi\\": "src/",
+      "K0nias\\FakturoidApi\\": "src/"
+    }
+  },
+
+  "autoload-dev": {
+    "psr-4": {
       "K0nias\\FakturoidApi\\Tests\\": "tests/"
     }
   },
