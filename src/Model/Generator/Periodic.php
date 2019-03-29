@@ -4,6 +4,7 @@ namespace K0nias\FakturoidApi\Model\Generator;
 
 use DateTimeImmutable;
 use K0nias\FakturoidApi\Model\Common\DateTime\DateTimeHelper;
+use K0nias\FakturoidApi\Model\DataValidator\MonthsPeriodValidator;
 use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
 
 final class Periodic
@@ -55,9 +56,7 @@ final class Periodic
 
     private function monthsPeriod(int $monthsPeriod): self
     {
-        if ($monthsPeriod < 1) {
-            throw new \K0nias\FakturoidApi\Exception\InvalidParameterException(sprintf('Months period must be positive integer greater than 0. Given: %s', $monthsPeriod));
-        }
+        MonthsPeriodValidator::validate($monthsPeriod);
 
         $this->parameters = $this->parameters->set('months_period', $monthsPeriod);
 
