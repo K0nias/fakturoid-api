@@ -2,8 +2,8 @@
 
 namespace K0nias\FakturoidApi\Model\Generator;
 
-use DateTime;
 use DateTimeImmutable;
+use K0nias\FakturoidApi\Model\Common\DateTime\DateTimeHelper;
 use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
 
 final class Periodic
@@ -12,6 +12,9 @@ final class Periodic
     /** @var \K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag */
     private $parameters;
 
+    /** @var \K0nias\FakturoidApi\Model\Common\DateTime\DateTimeHelper */
+    private $dateTimeHelper;
+
     /**
      * Periodic .
      */
@@ -19,17 +22,15 @@ final class Periodic
     {
         $this->parameters = new ImmutableParameterBag();
 
+        $this->dateTimeHelper = new DateTimeHelper();
+
         $this->startDate($startDate);
         $this->monthsPeriod($monthsPeriod);
     }
 
     private function startDate(DateTimeImmutable $startDate): self
     {
-        $now = new DateTime();
-        $now->setTime(0, 0, 0);
-        $testingDate = $startDate->setTime(0, 0, 0);
-
-        if ($testingDate < $now) {
+        if ($this->dateTimeHelper->isDateInPast($startDate)) {
             throw new \K0nias\FakturoidApi\Exception\InvalidParameterException(sprintf('Start date must set at least to now or in the future.'));
         }
 
