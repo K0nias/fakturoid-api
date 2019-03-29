@@ -3,6 +3,7 @@
 namespace K0nias\FakturoidApi\Model\Invoice;
 
 use DateTimeImmutable;
+use K0nias\FakturoidApi\Model\DataValidator\DueValidator;
 use K0nias\FakturoidApi\Model\Line\Line;
 use K0nias\FakturoidApi\Model\Line\LineCollection;
 use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
@@ -76,9 +77,7 @@ final class Parameters
 
     public function due(int $due): self
     {
-        if ($due < 1) {
-            throw new \K0nias\FakturoidApi\Exception\InvalidParameterException(sprintf('Due must be positive integer greater than 0. Given: %s', $due));
-        }
+        DueValidator::validate($due);
 
         $this->parameters = $this->parameters->set('due', $due);
 
