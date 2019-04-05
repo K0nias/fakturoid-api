@@ -26,12 +26,12 @@ class LineTest extends TestCase
     {
         $this->expectException(\K0nias\FakturoidApi\Exception\InvalidParameterException::class);
 
-        new Line('name', 1, 1, 'ks', 0);
+        new Line('name', 1, 1, 'ks', 0.0);
     }
 
     public function testCompleteData(): void
     {
-        $line = new Line('name', 1, 1, 'ks', 21);
+        $line = new Line('name', 1, 1, 'ks', 21.0);
 
         $this->assertEquals([
             'name' => 'name',
