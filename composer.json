@@ -44,6 +44,6 @@
     "phpunit": "vendor/bin/phpunit --verbose",
     "phpstan": "vendor/bin/phpstan.phar analyse -c phpstan.neon --level=max src tests",
     "phpcs": "vendor/bin/phpcs",
-    "infection": "vendor/bin/infection"
+    "infection": "vendor/bin/infection --min-msi=95 --min-covered-msi=95"
   }
 }
