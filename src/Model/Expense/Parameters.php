@@ -4,6 +4,7 @@ namespace K0nias\FakturoidApi\Model\Expense;
 
 use DateTime;
 use DateTimeImmutable;
+use K0nias\FakturoidApi\Model\Common\DateTime\DateTimeHelper;
 use K0nias\FakturoidApi\Model\Line\Line;
 use K0nias\FakturoidApi\Model\Line\LineCollection;
 use K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag;
@@ -16,9 +17,14 @@ final class Parameters
     /** @var \K0nias\FakturoidApi\Model\Parameters\ImmutableParameterBag */
     private $parameters;
 
+    /** @var \K0nias\FakturoidApi\Model\Common\DateTime\DateTimeHelper */
+    private $dateTimeHelper;
+
     public function __construct()
     {
         $this->parameters = new ImmutableParameterBag();
+
+        $this->dateTimeHelper = new DateTimeHelper();
     }
 
     public function subject(SubjectId $subjectId): self
@@ -88,7 +94,7 @@ final class Parameters
     /**
      * @return mixed[][]
      */
-    protected function transformLinesData(LineCollection $lineCollection): array
+    private function transformLinesData(LineCollection $lineCollection): array
     {
         return array_map(static function (Line $line) {
             return $line->getData();
@@ -108,12 +114,8 @@ final class Parameters
              * @var \DateTime $dueDate this date will be always correct
              */
             $dueDate = DateTime::createFromFormat('Y-m-d', $this->parameters->get('due_on'));
-            $dueDate->setTime(0, 0, 0);
 
-            $today = new DateTime();
-            $today->setTime(0, 0, 0);
-
-            if ($dueDate < $today) {
+            if ($this->dateTimeHelper->isDateInPast($dueDate)) {
                 // if due date is in the past then issued date must be at least same
                 $parameters['issued_on'] = $dueDate->format('Y-m-d');
             }

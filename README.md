@@ -55,7 +55,7 @@ Usage
 Tests
 -----
 
-To run the test suite, you need [Composer](http://getcomposer.org) and [PHPUnit](https://phpunit.de):
+To run the test suite, you need [Composer](http://getcomposer.org):
 
     composer install
     composer test

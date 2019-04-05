@@ -31,4 +31,17 @@ class ParametersTest extends TestCase
         ], $parametersFilter->getParameters());
     }
 
+    public function testInvalidPageValue(): void
+    {
+        $this->expectException(\OutOfRangeException::class);
+        $this->expectExceptionMessage('Page must be positive integer. Given "0"');
+
+        (new Parameters())->page(0);
+    }
+
+    public function testMinPageValue(): void
+    {
+        $this->assertNotNull((new Parameters())->page(1));
+    }
+
 }

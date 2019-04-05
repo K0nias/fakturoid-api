@@ -25,7 +25,7 @@ final class LineCollection
     }
 
 
-    protected function add(Line $line): void
+    private function add(Line $line): void
     {
         $this->lines[] = $line;
     }
